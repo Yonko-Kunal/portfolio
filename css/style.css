@@ -1,0 +1,163 @@
+/* Utility classes */
+/* .animate {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.animate.animate--infinite {
+    animation-iteration-count: infinite;
+}
+
+.animate.animate--delay-1s {
+    animation-delay: 1s;
+}
+
+.animate.animate--fast {
+    animation-duration: 0.6s;
+}
+
+.animate.animate--slow {
+    animation-duration: 3s;
+} */
+
+.fullScreen {
+    padding-bottom: 1000px;
+}
+
+nav {
+    display: fixed;
+}
+
+.nav-bar {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.leftNav {
+    margin-left: 80px;
+    text-align: center;
+
+}
+
+.logo {
+    width: 233px;
+    height: 77px;
+}
+
+.rightNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.bars {
+    cursor: pointer;
+}
+
+.menu {
+    text-decoration: none;
+    margin-right: 46px;
+    transition: all 0.3s;
+    color: #a3a3a3;
+}
+
+.menu:hover {
+    transform: translateY(-4px);
+    color: black;
+}
+
+.banner {
+    padding-top: 50px;
+    background-color: #d8cab2;
+    padding-bottom: 80px;
+    margin-bottom: 40px;
+}
+
+.mainBannerText {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    90% {
+        transform: translateX(5%);
+    }
+
+    95% {
+        transform: translateX(2.5%);
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slideInLeft {
+    animation: slideInLeft 1s ease forwards;
+    /* animation-delay: 0.5s; */
+}
+
+.letter1 {
+    font-size: 100px;
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    90% {
+        transform: translateX(-5%);
+    }
+
+    95% {
+        transform: translateX(-2.5%);
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slideInRight {
+    animation: slideInRight 1s ease forwards;
+    /* animation-delay: 0.5s; */
+}
+
+.letter2 {
+    font-size: 70px;
+    margin-left: -35px;
+}
+
+.R {
+    color: rgb(115, 44, 182);
+}
+
+.letter3 {
+    font-size: 26px;
+    margin-left: 170px;
+}
+
+.codeSymbol {
+    font-size: 30px;
+    color: #a3a3a3;
+}
+
+.projectPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
