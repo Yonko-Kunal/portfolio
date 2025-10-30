@@ -54,9 +54,9 @@ export default function Hero() {
                 <Image
                     src={avatar}
                     alt="hero"
-                    width={100}
-                    height={100}
-                    className="md:size-24 size-18 rounded-full absolute md:translate-x-6 translate-x-5 md:translate-y-58 translate-y-40"
+                    width={200}
+                    height={200}
+                    className="md:size-30 size-24 rounded-full absolute md:translate-x-6 translate-x-5 md:translate-y-54 translate-y-15"
                 />
 
                 <Image
@@ -64,7 +64,7 @@ export default function Hero() {
                     alt="hero"
                     height={400}
                     width={1200}
-                    className='md:h-[300px] h-[200px] object-cover md:rounded-2xl rounded-[10px] mb-12'
+                    className='md:h-[300px] h-[130px] object-cover md:rounded-2xl rounded-[10px] mb-12'
                 />
 
 

@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Footer from "@/components/common/Footer";
+import { Quote } from "@/components/common/Quote";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <TooltipProvider>
           <Navbar />
           {children}
+          <Quote />
           <Footer />
         </TooltipProvider>
       </body>
