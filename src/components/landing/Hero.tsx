@@ -17,7 +17,7 @@ const buttonIcons = {
 };
 
 export default function Hero() {
-    const { name, title, avatar, skills, description, buttons } = heroConfig;
+    const { name, title, avatar, banner, skills, description, buttons } = heroConfig;
 
     const renderDescription = () => {
         const parts = parseTemplate(description.template, skills);
@@ -50,13 +50,26 @@ export default function Hero() {
     return (
         <Container className="mx-auto max-w-5xl">
             {/* Image */}
-            <Image
-                src={avatar}
-                alt="hero"
-                width={100}
-                height={100}
-                className="size-24 rounded-full dark:bg-yellow-300 bg-blue-300"
-            />
+            <div className=''>
+                <Image
+                    src={avatar}
+                    alt="hero"
+                    width={100}
+                    height={100}
+                    className="md:size-24 size-18 rounded-full absolute md:translate-x-6 translate-x-5 md:translate-y-58 translate-y-40"
+                />
+
+                <Image
+                    src={banner}
+                    alt="hero"
+                    height={400}
+                    width={1200}
+                    className='md:h-[300px] h-[200px] object-cover md:rounded-2xl rounded-[10px] mb-12'
+                />
+
+
+            </div>
+
 
             {/* Text Area */}
             <div className="mt-8 flex flex-col gap-4">
