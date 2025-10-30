@@ -1,6 +1,7 @@
 
 import logo from '@/../public/assets/logo.jpg'
 import Container from '@/components/common/Container'
+import { ThemeToggleButton } from './ThemeSwitch';
 
 const Navbar = () => {
     return (
@@ -16,8 +17,8 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
-                <div className='bg-red-600 rounded-full h-12 w-12'>
-
+                <div className="flex items-center gap-4">
+                    <ThemeToggleButton variant="circle" start="top-right" blur />
                 </div>
             </div>
         </Container>

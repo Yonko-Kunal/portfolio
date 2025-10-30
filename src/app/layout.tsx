@@ -5,6 +5,7 @@ import Navbar from "@/components/common/Navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Footer from "@/components/common/Footer";
 import { Quote } from "@/components/common/Quote";
+import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,16 +28,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
-        <TooltipProvider>
-          <Navbar />
-          {children}
-          <Quote />
-          <Footer />
-        </TooltipProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange={false}
+          storageKey="theme"
+        >
+          <TooltipProvider>
+            <Navbar />
+            {children}
+            <Quote />
+            <Footer />
+          </TooltipProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
