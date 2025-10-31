@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Footer from "@/components/common/Footer";
 import { Quote } from "@/components/common/Quote";
 import { ThemeProvider } from "next-themes";
+import OnekoCat from "@/components/common/OnekoCat";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,6 +44,7 @@ export default function RootLayout({
           <TooltipProvider>
             <Navbar />
             {children}
+            <OnekoCat />
             <Quote />
             <Footer />
           </TooltipProvider>
