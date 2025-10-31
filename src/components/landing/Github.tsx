@@ -3,7 +3,7 @@
 import { githubConfig } from '@/config/Github';
 import { useTheme } from 'next-themes';
 import dynamic from 'next/dynamic';
-import { Link } from 'next-view-transitions';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import Container from '../common/Container';

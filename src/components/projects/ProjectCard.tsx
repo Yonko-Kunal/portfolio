@@ -13,7 +13,7 @@ import {
     DialogTrigger,
 } from '@/components/ui/dialog';
 import { type Project } from '@/types/Project';
-import { Link } from 'next-view-transitions';
+import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -140,8 +140,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <CardFooter className="p-6 pt-0 flex justify-between">
                     <div
                         className={`flex items-center gap-1 rounded-md px-2 py-1 text-xs ${project.isWorking
-                                ? 'border-green-300 bg-green-500/10'
-                                : 'border-red-300 bg-red-500/10'
+                            ? 'border-green-300 bg-green-500/10'
+                            : 'border-red-300 bg-red-500/10'
                             }`}
                     >
                         {project.isWorking ? (

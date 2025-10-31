@@ -2,7 +2,7 @@
 
 import { type Experience, experiences } from '@/config/Experience';
 import { useState } from 'react';
-import { Link } from 'next-view-transitions';
+import Link from 'next/link';
 
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
