@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-export default function Container({
-    children,
-    className,
-    ...props
-}: {
+interface ContainerProps {
     children: React.ReactNode;
     className?: string;
-}) {
-    return (
-        <div
-            className={`container mx-auto max-w-3xl px-4 animate-fade-in-blur ${className}`}
-            {...props}
-        >
-            {children}
-        </div>
-    );
 }
+
+const Container = forwardRef<HTMLDivElement, ContainerProps>(
+    ({ children, className, ...props }, ref) => {
+        return (
+            <div
+                ref={ref}
+                className={`container mx-auto max-w-3xl px-4 animate-fade-in-blur ${className}`}
+                {...props}
+            >
+                {children}
+            </div>
+        );
+    }
+);
+
+Container.displayName = 'Container';
+
+export default Container;
