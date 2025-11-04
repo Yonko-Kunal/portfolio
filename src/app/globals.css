@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
 /* @font-face {
   font-family: 'Hanken Grotesk';
   src: url('/fonts/HankenGrotesk-Variable.ttf') format('truetype');
@@ -174,4 +175,31 @@ Liquid Glass Effect */
 
 .dark .liquidGlass-wrapper {
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/*Lenis recommended css*/
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent],
+.lenis [data-lenis-prevent-wheel],
+.lenis [data-lenis-prevent-touch] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.lenis.lenis-autoToggle {
+  transition-property: overflow;
+  transition-duration: 1ms;
+  transition-behavior: allow-discrete;
 }

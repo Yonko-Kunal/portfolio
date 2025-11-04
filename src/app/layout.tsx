@@ -8,6 +8,7 @@ import { Quote } from "@/components/common/Quote";
 import { ThemeProvider } from "next-themes";
 import OnekoCat from "@/components/common/OnekoCat";
 import { ViewTransitions } from 'next-view-transitions'
+import { ReactLenis } from '@/lib/lenis'
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] })
 
@@ -37,13 +38,15 @@ export default function RootLayout({
             disableTransitionOnChange={false}
             storageKey="theme"
           >
-            <TooltipProvider>
-              <Navbar />
-              {children}
-              <OnekoCat />
-              <Quote />
-              <Footer />
-            </TooltipProvider>
+            <ReactLenis root>
+              <TooltipProvider>
+                <Navbar />
+                {children}
+                <OnekoCat />
+                <Quote />
+                <Footer />
+              </TooltipProvider>
+            </ReactLenis>
           </ThemeProvider>
         </body>
       </html>

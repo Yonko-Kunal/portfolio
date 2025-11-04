@@ -5,7 +5,7 @@ import Container from '@/components/common/Container'
 import { ThemeToggleButton } from './ThemeSwitch';
 import { Link } from 'next-view-transitions'
 import { motion, useMotionValueEvent, useScroll } from 'motion/react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // Create motion component outside the Navbar component
 const MotionContainer = motion(Container)
@@ -30,6 +30,7 @@ const Navbar = () => {
     const [hoverd, setHoverd] = useState<number | null>(null)
     const [scrolled, setScrolled] = useState<boolean>(false)
     const { scrollY } = useScroll()
+    const [isMobile, setIsMobile] = useState(false);
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         if (latest > 20) {
@@ -39,24 +40,40 @@ const Navbar = () => {
         }
     })
 
+    useEffect(() => {
+        const checkScreen = () => setIsMobile(window.innerWidth <= 768);
+        checkScreen();
+        window.addEventListener("resize", checkScreen);
+        return () => window.removeEventListener("resize", checkScreen);
+    }, []);
+
 
 
     return (
         <MotionContainer
             animate={{
-                width: scrolled ? "36%" : "100%",
-                top: scrolled ? "0.75rem" : "0rem",
-                // border: scrolled ? "" : "0px"
+                width: isMobile
+                    ? scrolled
+                        ? "100%"
+                        : "100%"
+                    : scrolled
+                        ? "36%"
+                        : "100%",
+                top: isMobile
+                    ? scrolled
+                        ? "90%" : "0rem" :
+                    scrolled
+                        ? "0.75rem" : "0rem",
             }}
             style={{
                 border: scrolled ? "" : "none",
 
             }}
             transition={{
-                ease: "easeInOut",
-                duration: 0.3
+                ease: isMobile ? "anticipate" : "easeInOut",
+                duration: isMobile ? 0.77 : 0.35
             }}
-            className="sticky z-20 rounded-full py-4 liquidGlass-wrapper"
+            className="sticky z-20 rounded-[20px] py-1 liquidGlass-wrapper"
         >
             {/* SVG Filter for Liquid Glass Effect - Inside Container */}
             <svg style={{ position: 'absolute', width: 0, height: 0 }}>
@@ -77,7 +94,7 @@ const Navbar = () => {
                         <feDisplacementMap
                             in="SourceGraphic"
                             in2="softMap"
-                            scale="150"
+                            scale="200"
                         />
                     </filter>
                 </defs>

@@ -1,7 +1,6 @@
 'use client';
 
 import { type Experience } from '@/config/Experience';
-import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronDown, ChevronUp } from 'lucide-react';
@@ -12,6 +11,7 @@ import LinkedIn from '../svgs/LinkedIn';
 import Website from '../svgs/Website';
 import X from '../svgs/X';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
+import { motion, AnimatePresence } from 'motion/react'
 
 interface CollapsibleExperienceCardProps {
     experience: Experience;
@@ -31,8 +31,7 @@ export function CollapsibleExperienceCard({
     return (
         <div className="border-none rounded-lg overflow-hidden">
             {/* Header - Always Visible */}
-            <div
-                className="flex items-left justify-between cursor-pointer transition-colors md:flex-row flex-col gap-2"
+            <div className="flex items-left justify-between cursor-pointer transition-colors md:flex-row flex-col gap-2"
                 onClick={onToggle}
             >
                 <div className="flex items-center gap-4">
@@ -131,44 +130,55 @@ export function CollapsibleExperienceCard({
             </div>
 
             {/* Expandable Content */}
-            {isExpanded && (
-                <div className="">
-                    {/* Technologies */}
-                    <div className="mt-4">
-                        <h4 className="text-sm font-medium mb-2 text-secondary">
-                            Technologies & Tools
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                            {experience.technologies.map((technology, techIndex: number) => (
-                                <Skill
-                                    key={techIndex}
-                                    name={technology.name}
-                                    href={technology.href}
-                                >
-                                    {technology.icon}
-                                </Skill>
-                            ))}
+            <AnimatePresence initial={false}>
+                {isExpanded && (
+                    <motion.div
+                        initial={{ height: 0, filter: "blur(5px)", opacity: 0 }}
+                        animate={{ height: "auto", filter: "blur(0px)", opacity: 1 }}
+                        exit={{ height: 0, filter: "blur(5px)", opacity: 0 }}
+                        transition={{
+                            duration: 0.3,
+                            ease: "circInOut"
+                        }}
+                        className="overflow-hidden"
+                    >
+                        {/* Technologies */}
+                        <div className="mt-4">
+                            <h4 className="text-sm font-medium mb-2 text-secondary">
+                                Technologies & Tools
+                            </h4>
+                            <div className="flex flex-wrap gap-2">
+                                {experience.technologies.map((technology, techIndex: number) => (
+                                    <Skill
+                                        key={techIndex}
+                                        name={technology.name}
+                                        href={technology.href}
+                                    >
+                                        {technology.icon}
+                                    </Skill>
+                                ))}
+                            </div>
                         </div>
-                    </div>
 
-                    {/* Description */}
-                    <div className="mt-4">
-                        <div className="text-secondary landing-relaxed">
-                            {experience.description.map(
-                                (description: string, descIndex: number) => (
-                                    <p
-                                        key={descIndex}
-                                        className="leading-relaxed"
-                                        dangerouslySetInnerHTML={{
-                                            __html: `• ${parseDescription(description)}`,
-                                        }}
-                                    />
-                                ),
-                            )}
+                        {/* Description */}
+                        <div className="mt-4">
+                            <div className="text-secondary landing-relaxed">
+                                {experience.description.map(
+                                    (description: string, descIndex: number) => (
+                                        <p
+                                            key={descIndex}
+                                            className="leading-relaxed"
+                                            dangerouslySetInnerHTML={{
+                                                __html: `• ${parseDescription(description)}`,
+                                            }}
+                                        />
+                                    ),
+                                )}
+                            </div>
                         </div>
-                    </div>
-                </div>
-            )}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
