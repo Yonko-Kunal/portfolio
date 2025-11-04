@@ -1,11 +1,13 @@
 'use client'
 
+import { heroConfig } from '@/config/Hero';
 import logo from '@/../public/assets/logo.jpg'
 import Container from '@/components/common/Container'
 import { ThemeToggleButton } from './ThemeSwitch';
 import { Link } from 'next-view-transitions'
 import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 // Create motion component outside the Navbar component
 const MotionContainer = motion(Container)
@@ -27,6 +29,7 @@ const Navbar = () => {
         },
     ]
 
+    const { avatar } = heroConfig;
     const [hoverd, setHoverd] = useState<number | null>(null)
     const [scrolled, setScrolled] = useState<boolean>(false)
     const { scrollY } = useScroll()
@@ -107,7 +110,13 @@ const Navbar = () => {
                 <div className="flex items-center justify-between">
                     <Link href="/">
                         <div>
-                            <img className='h-12 w-12 rounded-full border border-gray-200 bg-blue-300 transition-all duration-300 ease-in-out hover:scale-90 dark:bg-yellow-300' src={logo.src} alt="" />
+                            {/* className='h-12 w-12 rounded-full border border-gray-200 bg-blue-300 transition-all duration-300 ease-in-out hover:scale-90 dark:bg-yellow-300' */}
+                            <Image className='rounded-full transition-all duration-300 ease-in-out hover:scale-90'
+                                src={avatar}
+                                alt="avatar"
+                                width={48}
+                                height={48}
+                            />
                         </div>
                     </Link>
 

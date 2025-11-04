@@ -24,6 +24,7 @@
  */
 
 import Github from '@/components/svgs/Github';
+import { Insta } from '@/components/svgs/Insta';
 import LinkedIn from '@/components/svgs/LinkedIn';
 import Mail from '@/components/svgs/Mail';
 import X from '@/components/svgs/X';
@@ -108,22 +109,28 @@ export const heroConfig = {
 export const socialLinks = [
     {
         name: 'X',
-        href: 'https://x.com/ramxcodes',
+        href: 'https://x.com/yonkoKunal',
         icon: <X />,
     },
     {
         name: 'LinkedIn',
-        href: 'https://www.linkedin.com/in/ramxcodes/',
+        href: 'https://www.linkedin.com/in/kunal-roy/',
         icon: <LinkedIn />,
     },
     {
         name: 'Github',
-        href: 'https://github.com/ramxcodes',
+        href: 'https://github.com/Yonko-Kunal',
         icon: <Github />,
     },
     {
+        name: 'Instagram',
+        href: 'https://www.instagram.com/kunal_r0y/',
+        icon: <Insta />,
+    },
+    {
         name: 'Email',
-        href: 'mailto:ramxcodes@gmail.com',
+        href: 'mailto:kunalroy267483@gmail.com',
         icon: <Mail />,
     },
+
 ];
