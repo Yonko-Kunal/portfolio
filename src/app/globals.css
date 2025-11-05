@@ -2,16 +2,6 @@
 @import "tw-animate-css";
 
 
-/* @font-face {
-  font-family: 'Hanken Grotesk';
-  src: url('/fonts/HankenGrotesk-Variable.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Hanken Grotesk Italic';
-  src: url('/fonts/HankenGrotesk-Italic-Variable.ttf') format('truetype');
-} */
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -137,13 +127,26 @@
   @apply text-[#909092] dark:text-[#909092];
 }
 
-/* .font-hanken-grotesk {
-  font-family: 'Hanken Grotesk', sans-serif;
+/* @keyframes fadeInBlur {
+  0% {
+    opacity: 0.2;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
 }
 
-.font-hanken-grotesk-italic {
-  font-family: 'Hanken Grotesk Italic', sans-serif;
+.animate-fade-in-blur {
+  animation: fadeInBlur 0.5s ease-out forwards;
+  animation-delay: 0.3s;
+  opacity: 0.4;
+  filter: blur(3px);
 } */
+
+
+
 /* 
 Liquid Glass Effect */
 .liquidGlass-effect {
@@ -202,4 +205,9 @@ html.lenis body {
   transition-property: overflow;
   transition-duration: 1ms;
   transition-behavior: allow-discrete;
+}
+/* Pre
+vent PDF zoom in iframe */
+iframe {
+  touch-action: pan-y;
 }

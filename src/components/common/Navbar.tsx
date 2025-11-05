@@ -57,14 +57,14 @@ const Navbar = () => {
             animate={{
                 width: isMobile
                     ? scrolled
-                        ? "100%"
+                        ? "90%"
                         : "100%"
                     : scrolled
                         ? "36%"
                         : "100%",
                 top: isMobile
                     ? scrolled
-                        ? "90%" : "0rem" :
+                        ? "2%" : "0rem" :
                     scrolled
                         ? "0.75rem" : "0rem",
             }}
@@ -73,8 +73,8 @@ const Navbar = () => {
 
             }}
             transition={{
-                ease: isMobile ? "anticipate" : "easeInOut",
-                duration: isMobile ? 0.77 : 0.35
+                ease: isMobile ? "circInOut" : "easeInOut",
+                duration: isMobile ? 0.4 : 0.35
             }}
             className="sticky z-20 rounded-[20px] py-1 liquidGlass-wrapper"
         >
