@@ -1,16 +1,16 @@
 'use client';
 
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import ReactMarkdown from 'react-markdown';
 import { ProjectComponents } from './ProjectComponents';
 
 interface MarkdownContentProps {
-    mdxSource: MDXRemoteSerializeResult;
+    content: string;
 }
 
-export function MarkdownContent({ mdxSource }: MarkdownContentProps) {
+export function MarkdownContent({ content }: MarkdownContentProps) {
     return (
         <div className="prose prose-neutral max-w-none dark:prose-invert">
-            <MDXRemote {...mdxSource} components={ProjectComponents} />
+            <ReactMarkdown components={ProjectComponents}>{content}</ReactMarkdown>
         </div>
     );
 }

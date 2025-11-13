@@ -2,8 +2,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { ProjectCaseStudyFrontmatter } from '@/types/Project';
-import rehypeHighlight from '@shikijs/rehype';
-import { serialize } from 'next-mdx-remote/serialize';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -17,18 +15,6 @@ interface ProjectContentProps {
 }
 
 export async function ProjectContent({ frontmatter, content }: ProjectContentProps) {
-    const mdxSource = await serialize(content, {
-        mdxOptions: {
-            rehypePlugins: [
-                [
-                    rehypeHighlight,
-                    {
-                        theme: 'github-dark',
-                    },
-                ],
-            ],
-        },
-    });
     const {
         title,
         description,
@@ -216,7 +202,7 @@ export async function ProjectContent({ frontmatter, content }: ProjectContentPro
             )}
 
             {/* Content */}
-            <MarkdownContent mdxSource={mdxSource} />
+            <MarkdownContent content={content} />
         </article>
     );
 }
