@@ -16,16 +16,12 @@ const Navbar = () => {
 
     const navItems = [
         {
-            title: "Work",
-            href: "/work"
+            title: "Projects",
+            href: "/projects"
         },
         {
             title: "Blogs",
             href: "/blogs"
-        },
-        {
-            title: "Projects",
-            href: "/projects"
         },
     ]
 

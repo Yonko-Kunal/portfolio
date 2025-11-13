@@ -10,7 +10,7 @@ export default function Home() {
     <Container className="min-h-screen py-16">
       <Hero />
       <Projects />
-      <Experience />
+      {/* <Experience /> */}
       <Github />
       <About />
 
