@@ -14,7 +14,7 @@ export const githubConfig = {
     subtitle: 'coding journey over the past year',
 
     // Chart settings
-    blockSize: 11,
+    blockSize: 10,
     blockMargin: 3,
     fontSize: 12,
     maxLevel: 4,

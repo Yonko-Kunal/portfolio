@@ -173,12 +173,12 @@ export default function Github() {
                     </div>
                 ) : (
                     <div className="relative overflow-hidden">
-                        <div className="relative bg-background/50 backdrop-blur-sm rounded-lg border border-dashed dark:border-white/10 border-black/20 p-6">
+                        <div className="relative bg-background/50 backdrop-blur-sm rounded-lg border border-dashed dark:border-white/10 border-black/20 p-2">
                             <div className="w-full overflow-x-auto ">
                                 <ActivityCalendar
                                     data={contributions}
-                                    blockSize={12}
-                                    blockMargin={4}
+                                    blockSize={githubConfig.blockSize}
+                                    blockMargin={githubConfig.blockMargin}
                                     fontSize={githubConfig.fontSize}
                                     colorScheme={theme === 'dark' ? 'dark' : 'light'}
                                     hideTotalCount={true}
