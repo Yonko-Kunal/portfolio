@@ -107,7 +107,7 @@ const Navbar = () => {
                     <Link href="/">
                         <div>
                             {/* className='h-12 w-12 rounded-full border border-gray-200 bg-blue-300 transition-all duration-300 ease-in-out hover:scale-90 dark:bg-yellow-300' */}
-                            <Image className='transition-all duration-300 ease-in-out hover:scale-90'
+                            <Image className='rounded-full transition-all duration-300 ease-in-out hover:scale-90'
                                 src={avatar}
                                 alt="avatar"
                                 width={48}
@@ -115,7 +115,8 @@ const Navbar = () => {
                             />
                         </div>
                     </Link>
-
+                </div>
+                <div className="flex items-center gap-2">
                     <div>
                         <ul className='flex gap-3 p-4'>
                             <li className='transition-ease gap-4'>
@@ -135,14 +136,10 @@ const Navbar = () => {
                                         )}
                                         {items.title}
                                     </Link>
-
                                 ))}
                             </li>
-
                         </ul>
                     </div>
-                </div>
-                <div className="flex items-center gap-4">
                     <ThemeToggleButton variant="circle" start="top-right" blur />
                 </div>
             </motion.nav>

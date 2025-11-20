@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,7 +10,12 @@ import OnekoCat from "@/components/common/OnekoCat";
 import { ViewTransitions } from 'next-view-transitions'
 import { ReactLenis } from '@/lib/lenis'
 
-const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] })
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-ibm-plex-mono",
+  display: "swap",
+});
 
 
 
@@ -28,7 +33,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${inter.className} antialiased`}
+          className={`${ibmPlexMono.className} antialiased`}
           suppressHydrationWarning
         >
           <ThemeProvider
