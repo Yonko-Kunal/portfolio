@@ -107,7 +107,7 @@ const Navbar = () => {
                     <Link href="/">
                         <div>
                             {/* className='h-12 w-12 rounded-full border border-gray-200 bg-blue-300 transition-all duration-300 ease-in-out hover:scale-90 dark:bg-yellow-300' */}
-                            <Image className='rounded-full transition-all duration-300 ease-in-out hover:scale-90'
+                            <Image className='transition-all duration-300 ease-in-out hover:scale-90'
                                 src={avatar}
                                 alt="avatar"
                                 width={48}

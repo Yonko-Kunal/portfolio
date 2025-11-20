@@ -13,11 +13,11 @@ export default function About() {
             {/* About me */}
             <div className="mt-8 flex flex-col gap-4 md:flex-row">
                 <Image
-                    src="/assets/logo.jpg"
+                    src="/assets/logoNew.png"
                     alt="About"
                     width={300}
                     height={300}
-                    className="border-secondary size-60 rounded-md border-2 bg-blue-300"
+                    className="size-60 rounded-md"
                 />
                 <div className="mt-4">
                     <h3 className="text-2xl font-bold">{about.name}</h3>

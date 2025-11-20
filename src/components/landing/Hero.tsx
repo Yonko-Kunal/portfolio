@@ -48,31 +48,32 @@ export default function Hero() {
     };
 
     return (
-        <Container className="mx-auto max-w-5xl">
+        <Container className=" mx-auto max-w-5xl">
             {/* Image */}
-            <div className=''>
+            <div className='relative'>
+                {/* avatar */}
                 <Image
                     src={avatar}
                     alt="hero"
                     width={200}
                     height={200}
-                    className="md:size-30 size-24 rounded-full absolute md:translate-x-6 translate-x-5 md:translate-y-43 translate-y-15"
+                    className="bg-white md:size-30 size-24 rounded-full absolute md:translate-x-6 translate-x-5 md:translate-y-43 translate-y-15 z-11"
                 />
-
-                <Image
-                    src={banner}
-                    alt="hero"
-                    height={400}
-                    width={1200}
-                    className='md:h-[250px] h-[130px] object-cover md:rounded-2xl rounded-[10px] mb-12'
-                />
-
-
+                {/* banner */}
+                <div className='dottedBackground md:h-[250px] h-[130px] object-cover md:rounded-2xl rounded-[10px]mb-12'>
+                    <div className='overlay-1 absolute inset-0 z-10'></div>
+                    <Image
+                        src={banner}
+                        alt="hero"
+                        height={400}
+                        width={1200}
+                        className='md:h-[250px] h-[130px] object-cover md:rounded-2xl rounded-[10px] mb-12'
+                    />
+                </div>
             </div>
 
-
             {/* Text Area */}
-            <div className="mt-8 flex flex-col gap-4">
+            <div className="md:mt-16 mt-12 flex flex-col gap-4">
                 <h1 className="text-4xl font-bold leading-tight">
                     Hi, I&apos;m {name} —{' '}
                     <span className="text-secondary text-[35px]">{title}</span>
