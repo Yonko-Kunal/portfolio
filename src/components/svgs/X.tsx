@@ -1,13 +1,12 @@
 import React from 'react';
 
-export default function X() {
+export default function X({ className }: { className?: string }) {
     return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 256 256"
-        >
-            <path d="M214.75,211.71l-62.6-98.38,61.77-67.95a8,8,0,0,0-11.84-10.76L143.24,99.34,102.75,35.71A8,8,0,0,0,96,32H48a8,8,0,0,0-6.75,12.3l62.6,98.37-61.77,68a8,8,0,1,0,11.84,10.76l58.84-64.72,40.49,63.63A8,8,0,0,0,160,224h48a8,8,0,0,0,6.75-12.29ZM164.39,208,62.57,48h29L193.43,208Z"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" strokeWidth="1" fill="#ffffff" viewBox="0 0 16 16" id="Twitter-X--Streamline-Bootstrap" className='size-8'>
+            <desc>
+                Twitter X Streamline Icon: https://streamlinehq.com
+            </desc>
+            <path d="M12.6 0.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867 -5.07 -4.425 5.07H0.316l5.733 -6.57L0 0.75h5.063l3.495 4.633L12.601 0.75Zm-0.86 13.028h1.36L4.323 2.145H2.865z"></path>
         </svg>
     );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,15 +7,22 @@ import Footer from "@/components/common/Footer";
 import { Quote } from "@/components/common/Quote";
 import { ThemeProvider } from "next-themes";
 import OnekoCat from "@/components/common/OnekoCat";
-import { ViewTransitions } from 'next-view-transitions'
-import { ReactLenis } from '@/lib/lenis'
+import { ViewTransitions } from 'next-view-transitions';
+import { ReactLenis } from '@/lib/lenis';
 
-const ibmPlexMono = IBM_Plex_Mono({
+const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-ibm-plex-mono",
   display: "swap",
-});
+})
+
+const plexSans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  variable: "--font-plex-sans",
+  display: "swap",
+})
 
 
 
@@ -33,7 +40,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${ibmPlexMono.className} antialiased`}
+          className={`${plexMono.variable} ${plexSans.variable} ${plexSans.className} antialiased`}
           suppressHydrationWarning
         >
           <ThemeProvider

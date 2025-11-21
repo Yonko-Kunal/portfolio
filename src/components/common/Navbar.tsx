@@ -8,6 +8,7 @@ import { Link } from 'next-view-transitions'
 import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Logo from '../../../public/assets/Logo';
 
 // Create motion component outside the Navbar component
 const MotionContainer = motion(Container)
@@ -106,13 +107,13 @@ const Navbar = () => {
                 <div className="flex items-center justify-between">
                     <Link href="/">
                         <div>
-                            {/* className='h-12 w-12 rounded-full border border-gray-200 bg-blue-300 transition-all duration-300 ease-in-out hover:scale-90 dark:bg-yellow-300' */}
-                            <Image className='rounded-full transition-all duration-300 ease-in-out hover:scale-90'
+                            {/* <Image className='rounded-full transition-all duration-300 ease-in-out hover:scale-90'
                                 src={avatar}
                                 alt="avatar"
                                 width={48}
                                 height={48}
-                            />
+                            /> */}
+                            <Logo className="text-black dark:text-white transition-all duration-300 ease-in-out" />
                         </div>
                     </Link>
                 </div>
@@ -122,7 +123,7 @@ const Navbar = () => {
                             <li className='transition-ease gap-4'>
                                 {navItems.map((items, idx) => (
                                     <Link
-                                        className='relative hover:text-yellow-500 px-2 py-1'
+                                        className='font-mono text-sm font-medium relative hover:text-yellow-500 px-2 py-1'
                                         href={items.href}
                                         key={idx}
                                         onMouseEnter={() => setHoverd(idx)}
