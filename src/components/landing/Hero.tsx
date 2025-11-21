@@ -51,7 +51,7 @@ export default function Hero() {
     // };
 
     return (
-        <Container className=" mx-auto max-w-5xl mb-8">
+        <Container className="mx-auto max-w-5xl mb-8">
             {/* Image */}
             <div className='relative'>
                 {/* avatar */}
@@ -64,7 +64,7 @@ export default function Hero() {
                 />
                 {/* banner */}
 
-                <div className='dottedBackground md:h-[250px] h-[130px] object-cover md:rounded-2xl rounded-[10px]mb-12'>
+                <div className='dottedBackground md:h-[250px] h-[130px] object-cover mb-12'>
                     <Tilt rotationFactor={5} isRevese>
                         <div className='overlay-1 absolute inset-0 z-10'></div>
                         <Image
@@ -72,7 +72,7 @@ export default function Hero() {
                             alt="hero"
                             height={400}
                             width={1200}
-                            className='md:h-[250px] h-[130px] object-cover md:rounded-2xl rounded-[10px] mb-12'
+                            className='md:h-[250px] h-[130px] object-cover mb-12'
                         />
                     </Tilt>
                 </div>
@@ -107,7 +107,7 @@ export default function Hero() {
                 </div>
 
                 {/* Description */}
-                <div className="flex flex-col gap-2 text-sm font-mono leading-relaxed border border-black/15 dark:border-white/15 rounded-lg p-4">
+                <div className="flex flex-col gap-2 text-sm font-mono leading-relaxed border border-black/10 dark:border-white/10 p-4">
                     <div className='flex items-center gap-3'>
                         <div className={customCssForSvg}>
                             <Code />

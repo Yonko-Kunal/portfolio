@@ -8,7 +8,7 @@ import Socials from "@/components/landing/Socials";
 
 export default function Home() {
   return (
-    <Container className="min-h-screen py-16">
+    <Container className="min-h-screen">
       <Hero />
       <Socials />
       <Projects />

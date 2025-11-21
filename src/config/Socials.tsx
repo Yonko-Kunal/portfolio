@@ -7,7 +7,7 @@ import Insta from '@/components/svgs/Insta'
 
 export const socialsConfig = {
     x: {
-        name: 'X (FORMALY TWITTER)',
+        name: 'X (Formerly Twitter)',
         username: '@yonkoKunal',
         icon: <X />,
         link: 'https://x.com/yonkoKunal'

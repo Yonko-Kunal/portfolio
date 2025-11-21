@@ -119,7 +119,7 @@ const Navbar = () => {
                 </div>
                 <div className="flex items-center gap-2">
                     <div>
-                        <ul className='flex gap-3 p-4'>
+                        <ul className='flex gap-3 p-4 pr-0'>
                             <li className='transition-ease gap-4'>
                                 {navItems.map((items, idx) => (
                                     <Link
