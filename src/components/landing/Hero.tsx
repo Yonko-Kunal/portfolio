@@ -3,6 +3,8 @@ import { parseTemplate } from '@/lib/hero';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Tilt } from '../motion-primitives/tilt';
+import { TextLoop } from '../motion-primitives/text-loop';
 
 import Container from '@/components/common/Container';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -61,15 +63,18 @@ export default function Hero() {
                     className="bg-white md:size-30 size-24 rounded-full absolute md:translate-x-6 translate-x-5 md:translate-y-43 translate-y-15 z-11"
                 />
                 {/* banner */}
+
                 <div className='dottedBackground md:h-[250px] h-[130px] object-cover md:rounded-2xl rounded-[10px]mb-12'>
-                    <div className='overlay-1 absolute inset-0 z-10'></div>
-                    <Image
-                        src={banner}
-                        alt="hero"
-                        height={400}
-                        width={1200}
-                        className='md:h-[250px] h-[130px] object-cover md:rounded-2xl rounded-[10px] mb-12'
-                    />
+                    <Tilt rotationFactor={5} isRevese>
+                        <div className='overlay-1 absolute inset-0 z-10'></div>
+                        <Image
+                            src={banner}
+                            alt="hero"
+                            height={400}
+                            width={1200}
+                            className='md:h-[250px] h-[130px] object-cover md:rounded-2xl rounded-[10px] mb-12'
+                        />
+                    </Tilt>
                 </div>
             </div>
 
@@ -94,7 +99,11 @@ export default function Hero() {
                         </h1>
                         <BlueTick />
                     </div>
-                    <span className="text-secondary font-mono text-sm leading-relaxed">{title}</span>
+                    <TextLoop>
+                        {heroConfig.title.map((title, index) => (
+                            <span key={index} className="text-secondary font-mono text-sm leading-relaxed">{title}</span>
+                        ))}
+                    </TextLoop>
                 </div>
 
                 {/* Description */}
