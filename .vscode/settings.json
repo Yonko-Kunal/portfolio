@@ -1,1 +1,6 @@
-{}
+{
+    "editor.wrappingIndent": "same",
+    "editor.wrapOnEscapedLineFeeds": true,
+    "notebook.output.wordWrap": false,
+    "editor.wordWrap": "on"
+}
