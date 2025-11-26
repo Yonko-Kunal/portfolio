@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
@@ -7,24 +8,22 @@ import Footer from "@/components/common/Footer";
 import { Quote } from "@/components/common/Quote";
 import { ThemeProvider } from "next-themes";
 import OnekoCat from "@/components/common/OnekoCat";
-import { ViewTransitions } from 'next-view-transitions';
-import { ReactLenis } from '@/lib/lenis';
+import { ViewTransitions } from "next-view-transitions";
+import { ReactLenis } from "@/lib/lenis";
 
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-ibm-plex-mono",
   display: "swap",
-})
+});
 
 const plexSans = IBM_Plex_Sans({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
   variable: "--font-plex-sans",
   display: "swap",
-})
-
-
+});
 
 export const metadata: Metadata = {
   title: "Kunal Roy",
@@ -60,6 +59,7 @@ export default function RootLayout({
               </TooltipProvider>
             </ReactLenis>
           </ThemeProvider>
+          <Analytics />
         </body>
       </html>
     </ViewTransitions>
