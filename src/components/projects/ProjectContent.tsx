@@ -9,6 +9,7 @@ import GithubIcon from "../svgs/GithubIcon";
 import Website from "../svgs/Website";
 import { MarkdownContent } from "./MarkdownContent";
 import Container from "../common/Container";
+import { TextShimmer } from "@/components/motion-primitives/text-shimmer";
 
 interface ProjectContentProps {
   frontmatter: ProjectCaseStudyFrontmatter;
@@ -123,7 +124,7 @@ export async function ProjectContent({
                     className="flex items-center gap-2"
                   >
                     <Website className="size-4" />
-                    Live Demo
+                    <TextShimmer duration={1.2}>Live Demo</TextShimmer>
                   </Link>
                 </Button>
               )}
