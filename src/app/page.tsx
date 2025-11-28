@@ -6,11 +6,13 @@ import Projects from "@/components/landing/Projects";
 import Socials from "@/components/landing/Socials";
 import { GitHubContributions } from "@/components/landing/Github-Contributions";
 import { cn } from "@/lib/utils";
+// import Spotify from "@/components/landing/Spotify";
 
 export default function Home() {
   return (
     <Container className="min-h-screen">
       <Hero />
+      {/* <Spotify /> */}
       <Socials />
       <Projects />
       {/* <Experience /> */}
