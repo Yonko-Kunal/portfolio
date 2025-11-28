@@ -6,6 +6,7 @@ import Link from "next/link";
 import SpotifyIcon from "@/components/svgs/Spotify";
 import { FaPlay, FaPause } from "react-icons/fa";
 import Container from "../common/Container";
+import { toast } from "sonner";
 
 interface SpotifyData {
   isPlaying: boolean;
@@ -24,7 +25,7 @@ export default function Spotify() {
     refreshInterval: 5000,
   });
 
-  // New State for handling the "Open/Close" interaction
+  // State for handling the "Open/Close" interaction
   const [isExpanded, setIsExpanded] = useState(false);
   const [isLocalPlaying, setIsLocalPlaying] = useState(false);
 
@@ -39,14 +40,14 @@ export default function Spotify() {
     }
   }, [data?.isPlaying]);
 
-  // 1. Set volume safely
+  // Set volume safely
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.5;
     }
   }, [data?.previewUrl]);
 
-  // 2. Stop local music if song changes
+  // Stop local music if song changes
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -68,9 +69,10 @@ export default function Spotify() {
     }
   };
 
-  // const handleOnClickOfflineStatus = () => {
-
-  // }
+  // 2. The Logic for the Offline Click
+  const handleOnClickOfflineStatus = () => {
+    toast("Kunal is currently offline on Spotify");
+  };
 
   // Click outside to close popup
   useEffect(() => {
@@ -92,10 +94,8 @@ export default function Spotify() {
     };
   }, [isExpanded]);
 
-  // 3. GSAP Animation (Only runs when expanded and playing)
+  // GSAP Animation
   useEffect(() => {
-    // checks for barsRef.current.length > 0
-    // This ensures we only try to animate if the bars are actually on the screen
     if (data?.isPlaying && isExpanded && barsRef.current.length > 0) {
       gsap.to(barsRef.current, {
         height: () => Math.random() * 20 + 4,
@@ -107,7 +107,6 @@ export default function Spotify() {
       });
     } else {
       gsap.killTweensOf(barsRef.current);
-      // Optional: Reset height only if elements exist
       if (barsRef.current.length > 0) {
         gsap.to(barsRef.current, { height: 4, duration: 0.5 });
       }
@@ -129,14 +128,16 @@ export default function Spotify() {
 
       {/* --- RENDER LOGIC --- */}
       {!data?.isPlaying ? (
-        // STATE 1: Offline (Gray Logo)
-        <div className="flex cursor-pointer items-center gap-2 p-2 opacity-50 grayscale transition-all duration-300 hover:opacity-100">
+        // STATE 1: Offline (Gray Logo) -> Now a Button!
+        <button
+          onClick={handleOnClickOfflineStatus}
+          className="flex cursor-pointer items-center gap-2 p-2 opacity-50 grayscale transition-all duration-300 hover:opacity-100"
+        >
           <SpotifyIcon />
-        </div>
+        </button>
       ) : (
-        // STATE 2 & 3: Playing - Always show logo, conditionally show popup
+        // STATE 2: Playing -> Green Spinning Logo
         <div className="relative flex items-center">
-          {/* Green Spinning Logo - Always visible when playing */}
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             className="flex items-center justify-center p-2 transition-transform duration-300 hover:scale-110"
@@ -148,28 +149,29 @@ export default function Spotify() {
             </div>
           </button>
 
-          {/* Popup - Appears below/beside the logo when expanded */}
+          {/* STATE 3: Expanded Popup */}
           {isExpanded && (
             <div
               ref={popupRef}
-              className="animate-in fade-in slide-in-from-top-2 absolute top-12 left-[-40px] z-1 duration-200 md:left-0"
+              className="animate-in fade-in slide-in-from-top-2 absolute top-12 left-[-40px] z-50 duration-200 md:left-0"
             >
               <Link
                 href={data.songUrl}
                 target="_blank"
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/80 p-3 pr-5"
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/80 p-3 pr-5 shadow-xl backdrop-blur-md"
               >
-                {/* Album Art */}
+                {/* Album Art (Vinyl Style) */}
                 <div className="relative h-10 w-10 shrink-0 md:h-12 md:w-12">
                   <img
                     src={data.albumImageUrl}
                     alt={data.album}
-                    className={`absolute z-47 h-full w-full rounded-full object-cover ${
+                    className={`absolute z-10 h-full w-full rounded-full object-cover ${
                       isLocalPlaying ? "animate-[spin_4s_linear_infinite]" : ""
                     }`}
                   />
-                  <div className="absolute inset-0 top-[50%] left-[50%] z-49 h-2 w-2 translate-x-[-50%] translate-y-[-50%] rounded-full bg-black md:h-3 md:w-3"></div>
-                  <div className="absolute inset-0 top-[50%] left-[50%] z-48 h-4 w-4 translate-x-[-50%] translate-y-[-50%] rounded-full bg-neutral-500/65 md:h-5 md:w-5"></div>
+                  {/* Vinyl Record Center Hole Effects */}
+                  <div className="absolute inset-0 top-[50%] left-[50%] z-20 h-2 w-2 translate-x-[-50%] translate-y-[-50%] rounded-full bg-black md:h-3 md:w-3"></div>
+                  <div className="absolute inset-0 top-[50%] left-[50%] z-10 h-4 w-4 translate-x-[-50%] translate-y-[-50%] rounded-full bg-neutral-500/65 md:h-5 md:w-5"></div>
                 </div>
 
                 {/* Song Info */}

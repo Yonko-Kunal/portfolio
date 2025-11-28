@@ -10,6 +10,7 @@ import { ThemeProvider } from "next-themes";
 import OnekoCat from "@/components/common/OnekoCat";
 import { ViewTransitions } from "next-view-transitions";
 import { ReactLenis } from "@/lib/lenis";
+import ThemeAwareToaster from "@/components/common/ThemeAwareToaster";
 
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
                 <OnekoCat />
                 <Quote />
                 <Footer />
+                <ThemeAwareToaster />
               </TooltipProvider>
             </ReactLenis>
           </ThemeProvider>
