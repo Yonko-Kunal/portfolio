@@ -232,10 +232,10 @@ iframe {
 
 .overlay-1 {
   background: linear-gradient(to top, rgba(255, 255, 255, 0.287) 0%, transparent 100%) center bottom / 100% 50% no-repeat;
-  border-radius: 10px;
+  
 }
 
 .dark .overlay-1 {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%) center bottom / 100% 50% no-repeat;
-  border-radius: 10px;
+  
 }

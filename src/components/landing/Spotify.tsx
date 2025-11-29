@@ -8,7 +8,7 @@ import { FaPlay, FaPause } from "react-icons/fa";
 import Container from "../common/Container";
 import { toast } from "sonner";
 
-interface SpotifyData {
+export interface SpotifyData {
   isPlaying: boolean;
   album: string;
   albumImageUrl: string;
@@ -18,7 +18,7 @@ interface SpotifyData {
   previewUrl: string | null;
 }
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function Spotify() {
   const { data, error } = useSWR<SpotifyData>("/api/spotify", fetcher, {
@@ -129,12 +129,14 @@ export default function Spotify() {
       {/* --- RENDER LOGIC --- */}
       {!data?.isPlaying ? (
         // STATE 1: Offline (Gray Logo) -> Now a Button!
-        <button
-          onClick={handleOnClickOfflineStatus}
-          className="flex cursor-pointer items-center gap-2 p-2 opacity-50 grayscale transition-all duration-300 hover:opacity-100"
-        >
-          <SpotifyIcon />
-        </button>
+        <div>
+          <button
+            onClick={handleOnClickOfflineStatus}
+            className="flex cursor-pointer items-center gap-2 p-2 opacity-50 grayscale transition-all duration-300 hover:opacity-100"
+          >
+            <SpotifyIcon />
+          </button>
+        </div>
       ) : (
         // STATE 2: Playing -> Green Spinning Logo
         <div className="relative flex items-center">
@@ -189,7 +191,7 @@ export default function Spotify() {
                   {data.previewUrl ? (
                     <button
                       onClick={toggleAudio}
-                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#1DB954] hover:text-black"
+                      className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-[#1DB954] hover:text-black"
                     >
                       {isLocalPlaying ? (
                         <FaPause size={10} />
