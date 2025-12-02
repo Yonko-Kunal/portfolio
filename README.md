@@ -21,7 +21,7 @@ A modern, responsive, and interactive portfolio website built with Next.js, Type
 - **Icons**: [Lucide React](https://lucide.dev/), [React Icons](https://react-icons.github.io/react-icons/)
 - **Utilities**: `clsx`, `tailwind-merge`, `date-fns`
 
-## 🏁 Getting Started
+## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
