@@ -9,7 +9,6 @@ import { Quote } from "@/components/common/Quote";
 import { ThemeProvider } from "next-themes";
 import OnekoCat from "@/components/common/OnekoCat";
 import { ViewTransitions } from "next-view-transitions";
-import { ReactLenis } from "@/lib/lenis";
 import ThemeAwareToaster from "@/components/common/ThemeAwareToaster";
 import { siteConfig } from "@/config/Meta";
 
@@ -69,16 +68,14 @@ export default function RootLayout({
             disableTransitionOnChange={false}
             storageKey="theme"
           >
-            <ReactLenis root>
-              <TooltipProvider>
-                <Navbar />
-                {children}
-                <OnekoCat />
-                <Quote />
-                <Footer />
-                <ThemeAwareToaster />
-              </TooltipProvider>
-            </ReactLenis>
+            <TooltipProvider>
+              <Navbar />
+              {children}
+              <OnekoCat />
+              <Quote />
+              <Footer />
+              <ThemeAwareToaster />
+            </TooltipProvider>
           </ThemeProvider>
           <Analytics />
         </body>
