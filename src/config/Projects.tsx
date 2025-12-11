@@ -6,6 +6,7 @@ import GSAP from "@/components/technologies/GSAP";
 import { Project } from "@/types/Project";
 import NextJs from "@/components/technologies/NextJs";
 import TypeScript from "@/components/technologies/TypeScript";
+import Shadcn from "@/components/technologies/Shadcn";
 
 export const projects: Project[] = [
   // {
@@ -64,6 +65,7 @@ export const projects: Project[] = [
       { name: "Vercel", icon: <Vercel key="vercel" /> },
       { name: "Tailwind CSS", icon: <TailwindCss key="tailwindcss" /> },
       { name: "TypeScript", icon: <TypeScript key="typescript" /> },
+      { name: "shadcn", icon: <Shadcn key="shadcn" /> },
     ],
     github: "https://github.com/Yonko-Kunal/chatLLM",
     live: "https://chat-llm-two.vercel.app/",
