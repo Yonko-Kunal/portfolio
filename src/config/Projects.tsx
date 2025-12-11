@@ -4,6 +4,8 @@ import TailwindCss from "@/components/technologies/TailwindCss";
 import Vercel from "@/components/technologies/Vercel";
 import GSAP from "@/components/technologies/GSAP";
 import { Project } from "@/types/Project";
+import NextJs from "@/components/technologies/NextJs";
+import TypeScript from "@/components/technologies/TypeScript";
 
 export const projects: Project[] = [
   // {
@@ -34,7 +36,8 @@ export const projects: Project[] = [
     description:
       "A smooth, animated recreation of the VALORANT landing page with interactive sections and an engaging, browsing experience.",
     image: "/project/valorant.png",
-    // video: 'https://ik.imagekit.io/hokb3mrdr/notesbuddy.mp4?tr=orig',
+    // video:
+    //   "https://ik.imagekit.io/z9tc2bt03/valorant-landing.mp4?updatedAt=1765452564782",
     link: "https://valorant-landing-sigma.vercel.app/",
     technologies: [
       { name: "React", icon: <ReactIcon key="react" /> },
@@ -47,6 +50,25 @@ export const projects: Project[] = [
     live: "https://valorant-landing-sigma.vercel.app/",
     details: true,
     projectDetailsPageSlug: "/projects/valorant",
+    isWorking: true,
+  },
+  {
+    title: "ChatLLM",
+    description:
+      "A multimodal AI chat application leveraging Google's Gemini models for seamless text and image analysis, featuring a responsive, polished dark-mode UI.",
+    image: "/project/ChatLLM.png",
+    // video: 'https://ik.imagekit.io/hokb3mrdr/notesbuddy.mp4?tr=orig',
+    link: "https://chat-llm-two.vercel.app/",
+    technologies: [
+      { name: "Nextjs", icon: <NextJs key="nextjs" /> },
+      { name: "Vercel", icon: <Vercel key="vercel" /> },
+      { name: "Tailwind CSS", icon: <TailwindCss key="tailwindcss" /> },
+      { name: "TypeScript", icon: <TypeScript key="typescript" /> },
+    ],
+    github: "https://github.com/Yonko-Kunal/chatLLM",
+    live: "https://chat-llm-two.vercel.app/",
+    details: true,
+    projectDetailsPageSlug: "/projects/chatLLM",
     isWorking: true,
   },
 ];
