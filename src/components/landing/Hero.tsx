@@ -100,7 +100,7 @@ export default function Hero() {
                 <div className={customCssForSvg}>
                   <Phone />
                 </div>
-                <p className="hover:underline">
+                <p className="underline-offset-4 hover:underline">
                   <a
                     href="tel:+919870429459"
                     target="_blank"
@@ -114,7 +114,7 @@ export default function Hero() {
                 <div className={customCssForSvg}>
                   <Message />
                 </div>
-                <p className="hover:underline">
+                <p className="underline-offset-4 hover:underline">
                   <a
                     href="mailto:kunalroy267483@gmail.com"
                     target="_blank"
@@ -128,7 +128,7 @@ export default function Hero() {
                 <div className={customCssForSvg}>
                   <Website />
                 </div>
-                <p className="hover:underline">
+                <p className="underline-offset-4 hover:underline">
                   <a
                     href="https://yonko-portfolio.vercel.app"
                     target="_blank"
