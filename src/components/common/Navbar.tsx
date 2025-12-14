@@ -72,7 +72,15 @@ const Navbar = () => {
       className="liquidGlass-wrapper sticky z-50 rounded-[15px] py-1 md:rounded-[20px]"
     >
       {/* SVG Filter for Liquid Glass Effect - Inside Container */}
-      <svg width="0" height="0" style={{ position: "absolute" }}>
+      <svg
+        style={{
+          position: "absolute",
+          width: 0,
+          height: 0,
+          pointerEvents: "none",
+        }}
+        aria-hidden="true"
+      >
         <defs>
           <filter id="glass-distortion">
             <feTurbulence

@@ -11,6 +11,7 @@ import OnekoCat from "@/components/common/OnekoCat";
 import { ViewTransitions } from "next-view-transitions";
 import ThemeAwareToaster from "@/components/common/ThemeAwareToaster";
 import { siteConfig } from "@/config/Meta";
+import BottomBlur from "@/components/common/BottomBlur";
 
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
@@ -70,6 +71,7 @@ export default function RootLayout({
           >
             <TooltipProvider>
               <Navbar />
+              <BottomBlur />
               {children}
               <OnekoCat />
               <Quote />
