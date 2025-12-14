@@ -69,10 +69,10 @@ const Navbar = () => {
         ease: isMobile ? "circInOut" : "easeInOut",
         duration: isMobile ? 0.4 : 0.35,
       }}
-      className="liquidGlass-wrapper sticky z-50 rounded-[20px] py-1"
+      className="liquidGlass-wrapper sticky z-50 rounded-[15px] py-1 md:rounded-[20px]"
     >
       {/* SVG Filter for Liquid Glass Effect - Inside Container */}
-      <svg style={{ position: "absolute", width: 0, height: 0 }}>
+      <svg width="0" height="0" style={{ position: "absolute" }}>
         <defs>
           <filter id="glass-distortion">
             <feTurbulence
@@ -101,13 +101,13 @@ const Navbar = () => {
                                 width={48}
                                 height={48}
                             /> */}
-              <Logo className="text-black transition-all duration-300 ease-in-out dark:text-white" />
+              <Logo className="h-10 w-10 text-black transition-all duration-300 ease-in-out md:h-12 md:w-12 dark:text-white" />
             </div>
           </Link>
         </div>
         <div className="flex items-center gap-2">
           <div>
-            <ul className="flex gap-3 p-4 pr-0">
+            <ul className="flex gap-3 p-2 pr-0 md:p-4">
               <li className="transition-ease gap-4">
                 {navItems.map((items, idx) => (
                   <Link

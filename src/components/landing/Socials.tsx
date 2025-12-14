@@ -5,7 +5,7 @@ import { socialsConfig } from "@/config/Socials";
 
 const Socials = () => {
   return (
-    <Container className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2">
+    <Container className="mx-auto mb-8 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2">
       {Object.entries(socialsConfig).map(([key, social]) => (
         <a
           href={social.link}
