@@ -80,67 +80,70 @@ export default function Hero() {
         </div>
 
         {/* Description */}
-        <div className="flex flex-col gap-2 border border-black/10 p-4 font-mono text-sm leading-relaxed dark:border-white/10">
-          <div className="flex items-center gap-3">
-            <div className={customCssForSvg}>
-              <Code />
-            </div>
-            <p>{role}</p>
-          </div>
-          <div className="grid grid-flow-row grid-rows-3 gap-2 md:grid-flow-col">
+
+        <div className="flex flex-col gap-2 border border-black/10 p-4 font-mono text-sm leading-relaxed md:gap-3 dark:border-white/10">
+          <div className="flex w-65 flex-col gap-3 md:w-full">
             <div className="flex items-center gap-3">
               <div className={customCssForSvg}>
-                <MapPin />
+                <Code />
               </div>
-              <p>{location}</p>
+              <p>{role}</p>
             </div>
-            <div className="flex items-center gap-3">
-              <div className={customCssForSvg}>
-                <Phone />
+            <div className="grid grid-flow-row grid-rows-3 gap-2 md:grid-flow-col">
+              <div className="flex items-center gap-3">
+                <div className={customCssForSvg}>
+                  <MapPin />
+                </div>
+                <p>{location}</p>
               </div>
-              <p className="hover:underline">
-                <a
-                  href="tel:+919870429459"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {phone}
-                </a>
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className={customCssForSvg}>
-                <Message />
+              <div className="flex items-center gap-3">
+                <div className={customCssForSvg}>
+                  <Phone />
+                </div>
+                <p className="hover:underline">
+                  <a
+                    href="tel:+919870429459"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {phone}
+                  </a>
+                </p>
               </div>
-              <p className="hover:underline">
-                <a
-                  href="mailto:kunalroy267483@gmail.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {email}
-                </a>
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className={customCssForSvg}>
-                <Website />
+              <div className="flex items-center gap-3">
+                <div className={customCssForSvg}>
+                  <Message />
+                </div>
+                <p className="hover:underline">
+                  <a
+                    href="mailto:kunalroy267483@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {email}
+                  </a>
+                </p>
               </div>
-              <p className="hover:underline">
-                <a
-                  href="https://yonko-portfolio.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {website}
-                </a>
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className={customCssForSvg}>
-                <Gender />
+              <div className="flex items-center gap-3">
+                <div className={customCssForSvg}>
+                  <Website />
+                </div>
+                <p className="hover:underline">
+                  <a
+                    href="https://yonko-portfolio.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {website}
+                  </a>
+                </p>
               </div>
-              <p>{gender}</p>
+              <div className="flex items-center gap-3">
+                <div className={customCssForSvg}>
+                  <Gender />
+                </div>
+                <p>{gender}</p>
+              </div>
             </div>
           </div>
         </div>

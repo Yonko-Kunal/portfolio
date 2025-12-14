@@ -7,6 +7,7 @@ import { Project } from "@/types/Project";
 import NextJs from "@/components/technologies/NextJs";
 import TypeScript from "@/components/technologies/TypeScript";
 import Shadcn from "@/components/technologies/Shadcn";
+import JavaScript from "@/components/technologies/JavaScript";
 
 export const projects: Project[] = [
   // {
@@ -46,6 +47,7 @@ export const projects: Project[] = [
       { name: "Tailwind CSS", icon: <TailwindCss key="tailwindcss" /> },
       { name: "GSAP", icon: <GSAP key="GSAP" /> },
       { name: "Motion", icon: <Motion key="motion" /> },
+      { name: "JavaScript", icon: <JavaScript key="javascript" /> },
     ],
     github: "https://github.com/Yonko-Kunal/valorant-landing",
     live: "https://valorant-landing-sigma.vercel.app/",

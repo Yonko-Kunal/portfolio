@@ -187,7 +187,7 @@ export async function ProjectContent({
             )}
 
             {learnings && learnings.length > 0 && (
-              <div className="border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/20">
+              <div className="border border-green-200 bg-green-50 p-4 dark:border-green-800/35 dark:bg-green-950/10">
                 <h3 className="mb-3 text-lg font-semibold text-green-800 dark:text-green-200">
                   Key Learnings
                 </h3>
