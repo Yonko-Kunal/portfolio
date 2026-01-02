@@ -1,7 +1,9 @@
+import { StaticImageData } from "next/image";
+
 export interface Project {
   title: string;
   description: string;
-  image: string;
+  image: string | StaticImageData;
   video?: string;
   link: string;
   technologies: { name: string; icon: React.ReactNode }[];

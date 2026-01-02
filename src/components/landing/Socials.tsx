@@ -19,11 +19,13 @@ const Socials = () => {
               {social.icon}
             </div>
             <div>
-              <p className="font-medium group-hover:underline">{social.name}</p>
+              <p className="font-medium underline-offset-3 group-hover:underline">
+                {social.name}
+              </p>
               <p className="text-secondary text-sm">{social.username}</p>
             </div>
           </div>
-          <div>
+          <div className="transition-transform group-hover:rotate-45">
             <LinkArrow />
           </div>
         </a>

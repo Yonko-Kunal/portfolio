@@ -22,6 +22,7 @@ import GithubIcon from "../svgs/GithubIcon";
 import PlayCircle from "../svgs/PlayCircle";
 import Website from "../svgs/Website";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import LinkArrow from "../svgs/LinkArrow";
 
 interface ProjectCardProps {
   project: Project;
@@ -41,6 +42,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               alt={project.title}
               width={500}
               height={500}
+              placeholder="blur"
             />
           </Link>
           {project.video && (
@@ -73,16 +75,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="space-y-4">
           {/* Project Header - Title and Icons */}
           <div className="flex items-center justify-between gap-4">
-            <Link href={project.projectDetailsPageSlug}>
-              <h3 className="group-hover:text-primary text-xl leading-tight font-semibold hover:cursor-pointer">
+            <Link
+              className="hover:underline hover:underline-offset-4"
+              href={project.projectDetailsPageSlug}
+            >
+              <h3 className="text-xl leading-tight font-semibold hover:cursor-pointer">
                 {project.title}
               </h3>
             </Link>
-            <div className="flex items-center gap-2">
+            <div className="group/icons flex items-center gap-2">
               <Tooltip>
                 <TooltipTrigger>
                   <Link
-                    className="text-secondary hover:text-primary flex size-6 items-center justify-center transition-colors"
+                    className="text-secondary hover:text-primary flex size-6 items-center justify-center transition-transform duration-300 group-hover/icons:scale-90 hover:scale-125!"
                     href={project.link}
                     target="_blank"
                   >
@@ -97,7 +102,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <TooltipTrigger>
                   {project.github && (
                     <Link
-                      className="text-secondary hover:text-primary flex size-6 items-center justify-center transition-colors"
+                      className="text-secondary hover:text-primary flex size-6 items-center justify-center transition-transform duration-300 group-hover/icons:scale-90 hover:scale-125!"
                       href={project.github}
                       target="_blank"
                     >
@@ -161,9 +166,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
           <Link
             href={project.projectDetailsPageSlug}
-            className="text-secondary hover:text-primary flex items-center gap-2 text-sm underline-offset-4 transition-colors hover:underline"
+            className="group/details text-secondary hover:text-primary flex items-center gap-2 text-sm underline-offset-4 transition-colors hover:underline"
           >
-            View Details <ArrowRight className="size-4" />
+            View Details
+            <div className="transition-transform duration-300 group-hover/details:rotate-45">
+              <LinkArrow />
+            </div>
           </Link>
         </CardFooter>
       )}

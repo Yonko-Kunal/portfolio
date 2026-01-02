@@ -8,6 +8,9 @@ import ReactIcon from "@/components/technologies/ReactIcon";
 // Technology Components
 import TypeScript from "@/components/technologies/TypeScript";
 
+// Static image import for blur placeholder
+import bannerImage from "@/../public/assets/banner.jpeg";
+
 // Component mapping for skills
 export const skillComponents = {
   TypeScript: TypeScript,
@@ -29,7 +32,7 @@ export const heroConfig = {
     "Small details matter.",
   ],
   avatar: "/assets/logoNew.png",
-  banner: "/assets/banner.jpeg",
+  banner: bannerImage,
   role: "Full Stack web developer and design enthusiast.",
   location: "New Delhi, India",
   email: "kunalroy267483@gmail.com",

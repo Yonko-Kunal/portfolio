@@ -53,6 +53,7 @@ export default function Hero() {
               alt="hero"
               height={400}
               width={1200}
+              placeholder="blur"
               className="mb-12 h-[130px] object-cover md:h-[250px]"
             />
           </Tilt>

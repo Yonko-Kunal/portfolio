@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ProjectCaseStudyFrontmatter } from "@/types/Project";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import Image from "next/image";
 
 import GithubIcon from "../svgs/GithubIcon";
@@ -54,6 +54,8 @@ export async function ProjectContent({
               fill
               className="object-cover"
               priority
+              blurDataURL={image}
+              placeholder="blur"
             />
           </div>
 

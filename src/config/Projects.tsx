@@ -9,6 +9,10 @@ import TypeScript from "@/components/technologies/TypeScript";
 import Shadcn from "@/components/technologies/Shadcn";
 import JavaScript from "@/components/technologies/JavaScript";
 
+// Static image imports for blur placeholder
+import valorantImage from "@/../public/project/valorant.png";
+import chatLLMImage from "@/../public/project/ChatLLM.png";
+
 export const projects: Project[] = [
   // {
   //     title: 'NotesBuddy',
@@ -37,7 +41,7 @@ export const projects: Project[] = [
     title: "Valorant-Landing",
     description:
       "A smooth, animated recreation of the VALORANT landing page with interactive sections and an engaging, browsing experience.",
-    image: "/project/valorant.png",
+    image: valorantImage,
     // video:
     //   "https://ik.imagekit.io/z9tc2bt03/valorant-landing.mp4?updatedAt=1765452564782",
     link: "https://valorant-landing-sigma.vercel.app/",
@@ -59,7 +63,7 @@ export const projects: Project[] = [
     title: "ChatLLM",
     description:
       "A multimodal AI chat application leveraging Google's Gemini models for seamless text and image analysis, featuring a responsive, polished dark-mode UI.",
-    image: "/project/ChatLLM.png",
+    image: chatLLMImage,
     // video: 'https://ik.imagekit.io/hokb3mrdr/notesbuddy.mp4?tr=orig',
     link: "https://chat-llm-two.vercel.app/",
     technologies: [
