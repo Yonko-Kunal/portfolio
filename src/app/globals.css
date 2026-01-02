@@ -41,6 +41,15 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --animate-shiny-text: shiny-text 8s infinite;
+  @keyframes shiny-text {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+  30%, 60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
 }
 
 :root {
@@ -146,8 +155,6 @@
   filter: blur(3px);
 } */
 
-
-
 /* 
 Liquid Glass Effect */
 .liquidGlass-effect {
@@ -236,10 +243,19 @@ iframe {
 
 .overlay-1 {
   background: linear-gradient(to top, rgba(255, 255, 255, 0.287) 0%, transparent 100%) center bottom / 100% 50% no-repeat;
-  
+
 }
 
 .dark .overlay-1 {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%) center bottom / 100% 50% no-repeat;
-  
+
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

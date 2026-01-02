@@ -4,9 +4,11 @@ import { heroConfig } from "@/config/Hero";
 import Container from "@/components/common/Container";
 import { ThemeToggleButton } from "./ThemeSwitch";
 import { Link } from "next-view-transitions";
+import { usePathname } from "next/navigation";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState, useEffect } from "react";
 import Logo from "../../../public/assets/Logo";
+import { Separator } from "../ui/separator";
 
 // Create motion component outside the Navbar component
 const MotionContainer = motion.create(Container);
@@ -113,13 +115,15 @@ const Navbar = () => {
             </div>
           </Link>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center">
           <div>
             <ul className="flex gap-3 p-2 pr-0 md:p-4">
               <li className="transition-ease gap-4">
                 {navItems.map((items, idx) => (
                   <Link
-                    className="relative px-2 py-1 font-mono text-sm font-medium hover:text-yellow-500"
+                    className={`relative px-2 py-1 font-mono text-sm font-medium hover:text-yellow-500 ${
+                      usePathname() === items.href ? "text-yellow-500" : ""
+                    }`}
                     href={items.href}
                     key={idx}
                     onMouseEnter={() => setHoverd(idx)}
@@ -141,6 +145,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
+          <Separator orientation="vertical" className="h-6! w-px!" />
           <ThemeToggleButton variant="circle" start="top-right" blur />
         </div>
       </motion.nav>

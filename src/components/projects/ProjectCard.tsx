@@ -13,7 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { type Project } from "@/types/Project";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -34,13 +34,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <Card className="group h-full w-full overflow-hidden rounded-none border-black/5 p-0 shadow-none transition-all dark:border-white/5">
       <CardHeader className="p-0">
         <div className="group relative aspect-video overflow-hidden">
-          <Image
-            className="h-full w-full object-cover"
-            src={project.image}
-            alt={project.title}
-            width={1920}
-            height={1080}
-          />
+          <Link href={project.projectDetailsPageSlug}>
+            <Image
+              className="h-full w-full cursor-pointer object-cover transition-all duration-300 hover:scale-110"
+              src={project.image}
+              alt={project.title}
+              width={500}
+              height={500}
+            />
+          </Link>
           {project.video && (
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>
