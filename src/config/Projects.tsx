@@ -12,6 +12,7 @@ import JavaScript from "@/components/technologies/JavaScript";
 // Static image imports for blur placeholder
 import valorantImage from "@/../public/project/valorant.png";
 import chatLLMImage from "@/../public/project/ChatLLM.png";
+import ipoWatchDogImage from "@/../public/project/ipo-watchdog.png";
 
 export const projects: Project[] = [
   // {
@@ -78,5 +79,25 @@ export const projects: Project[] = [
     details: true,
     projectDetailsPageSlug: "/projects/chatLLM",
     isWorking: true,
+  },
+  {
+    title: "Ipo WatchDog",
+    description:
+      "IPO Watchdog monitors upcoming IPOs and public filings to keep users informed about new company listings. It aggregates public market and SEC filing data, tracks IPO calendars/pricing, and notifies users of important IPO events and changes.",
+    image: ipoWatchDogImage,
+    // video: 'https://ik.imagekit.io/hokb3mrdr/notesbuddy.mp4?tr=orig',
+    link: "https://ipo-watchdog.vercel.app/",
+    technologies: [
+      { name: "Nextjs", icon: <NextJs key="nextjs" /> },
+      { name: "Vercel", icon: <Vercel key="vercel" /> },
+      { name: "Tailwind CSS", icon: <TailwindCss key="tailwindcss" /> },
+      { name: "TypeScript", icon: <TypeScript key="typescript" /> },
+      { name: "shadcn", icon: <Shadcn key="shadcn" /> },
+    ],
+    github: "https://github.com/Yonko-Kunal/ipo-watchdog",
+    live: "https://ipo-watchdog.vercel.app/",
+    details: true,
+    projectDetailsPageSlug: "/projects/ipowatchdog",
+    isWorking: false,
   },
 ];
