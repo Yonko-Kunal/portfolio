@@ -14,6 +14,7 @@ import Website from "../svgs/Website";
 import Gender from "../svgs/Gender";
 import Spotify from "@/components/landing/Spotify";
 import HeroAvatar from "./HeroAvatar";
+import IndianFlag from "../svgs/IndianFlag";
 
 const customCssForSvg =
   "dark:text-[#9F9FA9] text-[#71717B] size-5 flex shrink-0 items-center justify-center rounded-sm border border-muted-foreground/15 bg-muted ring-1 ring-muted-foreground/15 ring-edge ring-offset-1 ring-offset-background p-0.5";
@@ -38,6 +39,7 @@ export default function Hero() {
         {/* avatar */}
         <div>
           <HeroAvatar avatar={avatar} />
+          <IndianFlag className="absolute top-0 z-30 size-8 translate-x-2 translate-y-15 md:size-10 md:translate-x-2 md:translate-y-45" />
           <div className="absolute top-0 z-30 translate-x-22 translate-y-28 md:translate-x-28 md:translate-y-62">
             <Spotify />
           </div>

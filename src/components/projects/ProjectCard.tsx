@@ -37,7 +37,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="group relative aspect-video overflow-hidden">
           <Link href={project.projectDetailsPageSlug}>
             <Image
-              className="h-full w-full cursor-pointer object-cover transition-all duration-300 hover:scale-110"
+              className="h-full w-full cursor-pointer object-cover transition-all duration-300 hover:scale-105"
               src={project.image}
               alt={project.title}
               width={500}
@@ -71,7 +71,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </CardHeader>
 
-      <CardContent className="px-6">
+      <CardContent className="px-4">
         <div className="space-y-4">
           {/* Project Header - Title and Icons */}
           <div className="flex items-center justify-between gap-4">
@@ -79,7 +79,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               className="hover:underline hover:underline-offset-4"
               href={project.projectDetailsPageSlug}
             >
-              <h3 className="text-xl leading-tight font-semibold hover:cursor-pointer">
+              <h3 className="text-xl leading-tight font-bold hover:cursor-pointer">
                 {project.title}
               </h3>
             </Link>
@@ -118,7 +118,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
 
           {/* Description */}
-          <p className="text-secondary line-clamp-3">{project.description}</p>
+          <p className="text-secondary line-clamp-3 text-sm">
+            {project.description}
+          </p>
 
           {/* Technologies */}
           <div>
@@ -144,7 +146,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </CardContent>
 
       {project.details && (
-        <CardFooter className="flex justify-between p-6 pt-0">
+        <CardFooter className="flex justify-between p-4 pt-0">
           <div
             className={`flex items-center gap-1 rounded-md px-2 py-1 text-xs ${
               project.isWorking
@@ -154,13 +156,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
           >
             {project.isWorking ? (
               <>
-                <div className="size-2 animate-pulse rounded-full bg-green-500" />
-                All Systems Operational
+                <div className="size-2 animate-pulse rounded-full bg-green-500 text-sm" />
+                <p className="text-sm">All Systems Operational</p>
               </>
             ) : (
               <>
-                <div className="size-2 animate-pulse rounded-full bg-red-500" />
-                Building
+                <div className="size-2 animate-pulse rounded-full bg-red-500 text-sm" />
+                <p className="text-sm">Building</p>
               </>
             )}
           </div>
