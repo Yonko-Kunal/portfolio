@@ -2,6 +2,11 @@ import React from "react";
 import Container from "../common/Container";
 import LinkArrow from "../svgs/LinkArrow";
 import { socialsConfig } from "@/config/Socials";
+import { Pointer } from "@/components/ui/pointer";
+import CursorX from "../svgs/CursorX";
+import CursorGithub from "../svgs/CursorGithub";
+import CursorLinkedIn from "../svgs/CursorLinkedIn";
+import CursorInstagram from "../svgs/CursorInstagram";
 
 const Socials = () => {
   return (
@@ -12,8 +17,14 @@ const Socials = () => {
           target="_blank"
           rel="noopener noreferrer"
           key={key}
-          className="group flex cursor-pointer items-center justify-between border border-black/10 p-4 pr-2 transition-all hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/5"
+          className="group relative flex cursor-pointer items-center justify-between border border-black/10 p-4 pr-2 transition-all hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/5"
         >
+          <Pointer className="z-50">
+            {key === "x" && <CursorX />}
+            {key === "github" && <CursorGithub />}
+            {key === "linkedin" && <CursorLinkedIn />}
+            {key === "instagram" && <CursorInstagram />}
+          </Pointer>
           <div className="flex gap-4">
             <div className="flex items-center justify-center rounded-2xl border dark:border-white/5">
               {social.icon}

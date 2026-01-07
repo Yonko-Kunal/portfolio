@@ -15,29 +15,53 @@ import {
 import { type Project } from "@/types/Project";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "motion/react";
 
 import ArrowRight from "../svgs/ArrowRight";
 import GithubIcon from "../svgs/GithubIcon";
 import PlayCircle from "../svgs/PlayCircle";
 import Website from "../svgs/Website";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import LinkArrow from "../svgs/LinkArrow";
+import Play from "../svgs/Play";
 
 interface ProjectCardProps {
   project: Project;
 }
 
+const MotionCard = motion.create(Card);
+
 export function ProjectCard({ project }: ProjectCardProps) {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
-    <Card className="group h-full w-full overflow-hidden rounded-none border-black/5 p-0 shadow-none transition-all dark:border-white/5">
+    <MotionCard
+      initial="initial"
+      whileHover="hover"
+      animate={isMobile ? "hover" : "initial"}
+      className="group h-full w-full overflow-hidden rounded-none border-black/5 p-0 shadow-none transition-all dark:border-white/5"
+    >
       <CardHeader className="p-0">
         <div className="group relative aspect-video overflow-hidden">
           <Link href={project.projectDetailsPageSlug}>
             <Image
-              className="h-full w-full cursor-pointer object-cover transition-all duration-300 hover:scale-105"
+              className="h-full w-full cursor-pointer object-cover transition-all duration-300 group-hover:scale-105"
               src={project.image}
               alt={project.title}
               width={500}
@@ -83,48 +107,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 {project.title}
               </h3>
             </Link>
-            <div className="group/icons flex items-center gap-2">
-              <Tooltip>
-                <TooltipTrigger>
-                  <Link
-                    className="text-secondary hover:text-primary flex size-6 items-center justify-center transition-transform duration-300 group-hover/icons:scale-90 hover:scale-125!"
-                    href={project.link}
-                    target="_blank"
-                  >
-                    <Website />
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>View Website</p>
-                </TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger>
-                  {project.github && (
-                    <Link
-                      className="text-secondary hover:text-primary flex size-6 items-center justify-center transition-transform duration-300 group-hover/icons:scale-90 hover:scale-125!"
-                      href={project.github}
-                      target="_blank"
-                    >
-                      <GithubIcon />
-                    </Link>
-                  )}
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>View GitHub</p>
-                </TooltipContent>
-              </Tooltip>
-            </div>
           </div>
 
           {/* Description */}
-          <p className="text-secondary line-clamp-3 text-sm">
+          <p className="text-secondary text-md line-clamp-3">
             {project.description}
           </p>
 
           {/* Technologies */}
           <div>
-            <h4 className="text-secondary mb-2 text-sm font-medium">
+            <h4 className="text-secondary text-bg-red-500 mb-2 text-sm font-medium">
               Technologies
             </h4>
             <div className="flex flex-wrap gap-2">
@@ -166,17 +158,31 @@ export function ProjectCard({ project }: ProjectCardProps) {
               </>
             )}
           </div>
-          <Link
-            href={project.projectDetailsPageSlug}
-            className="group/details text-secondary hover:text-primary flex items-center gap-2 text-sm underline-offset-4 transition-colors hover:underline"
-          >
-            View Details
-            <div className="transition-transform duration-300 group-hover/details:rotate-45">
-              <LinkArrow />
-            </div>
-          </Link>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href={project.link}
+                target="_blank"
+                className="group/details text-secondary hover:text-primary flex items-center gap-2 overflow-hidden"
+              >
+                <motion.div
+                  variants={{
+                    initial: { y: "100%", opacity: 0 },
+                    hover: { y: 0, opacity: 1 },
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-[#28D865] hover:bg-[#28D865]/80"
+                >
+                  <Play />
+                </motion.div>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Live</p>
+            </TooltipContent>
+          </Tooltip>
         </CardFooter>
       )}
-    </Card>
+    </MotionCard>
   );
 }

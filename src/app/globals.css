@@ -226,9 +226,14 @@ iframe {
   touch-action: pan-y;
 }
 
+.dark .dottedBackground {
+  background-image: radial-gradient(#171719 1px, transparent 1px);
+  background-size: 10px 10px;
+  background-color: var(--background);
+}
 .dottedBackground {
-  background-image: radial-gradient(#27272a 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(#F1F1F1 1px, transparent 1px);
+  background-size: 10px 10px;
   background-color: var(--background);
 }
 
