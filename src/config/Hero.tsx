@@ -26,14 +26,10 @@ export const skillComponents = {
 export const heroConfig = {
   // Personal Information
   name: "Kunal Roy",
-  title: [
-    "A Full Stack Web developer.",
-    "A Design Enthusiast.",
-    "Small details matter.",
-  ],
+  title: ["A UI/UX designer.", "A Design Enthusiast.", "Small details matter."],
   avatar: "/assets/logoNew.png",
   banner: bannerImage,
-  role: "Full Stack web developer and design enthusiast.",
+  role: "UI/UX Focused Frontend Developer and Design Enthusiast.",
   location: "New Delhi, India",
   email: "kunalroy267483@gmail.com",
   phone: "+91 9870429459",

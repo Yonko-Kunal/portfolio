@@ -6,6 +6,7 @@ import Projects from "@/components/landing/Projects";
 import Socials from "@/components/landing/Socials";
 import { GitHubContributions } from "@/components/landing/Github-Contributions";
 import { cn } from "@/lib/utils";
+import MyCreativity from "@/components/landing/MyCreativity";
 // import Spotify from "@/components/landing/Spotify";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       {/* <Experience /> */}
       <GitHubContributions />
       <About />
+      <MyCreativity />
     </Container>
   );
 }
