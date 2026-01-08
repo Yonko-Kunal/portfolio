@@ -40,6 +40,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Extract slug from projectDetailsPageSlug (assuming it's like "/projects/slug")
+  // Or if it's just the slug, use it directly.
+  // Based on typical usage, let's sanitize it to be safe for CSS.
+  // Ideally, passing the raw slug would be better, but we can derive it.
+  const slug = project.projectDetailsPageSlug.split("/").pop() || "";
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -67,6 +73,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               width={500}
               height={500}
               placeholder="blur"
+              style={{}}
             />
           </Link>
           {project.video && (
@@ -171,7 +178,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     hover: { y: 0, opacity: 1 },
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-[#28D865] hover:bg-[#28D865]/80"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-(--button-primary) hover:bg-(--button-primary)/80"
                 >
                   <Play />
                 </motion.div>

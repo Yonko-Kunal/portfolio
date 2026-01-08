@@ -14,11 +14,13 @@ import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 interface ProjectContentProps {
   frontmatter: ProjectCaseStudyFrontmatter;
   content: string;
+  slug: string;
 }
 
 export async function ProjectContent({
   frontmatter,
   content,
+  slug,
 }: ProjectContentProps) {
   const {
     title,
@@ -56,6 +58,7 @@ export async function ProjectContent({
               priority
               blurDataURL={image}
               placeholder="blur"
+              style={{}}
             />
           </div>
 

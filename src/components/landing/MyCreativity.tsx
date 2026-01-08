@@ -11,7 +11,7 @@ import work5 from "../../../public/assets/CreativeWork/work5.png";
 
 const MyCreativity = () => {
   return (
-    <Container className="flex flex-col gap-8">
+    <Container className="flex flex-col gap-8 overflow-hidden">
       <SectionHeading subHeading="Creativity" heading="My Creative Works" />
       <InfiniteSlider speed={70} speedOnHover={1} gap={0}>
         <Image

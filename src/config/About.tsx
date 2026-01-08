@@ -38,5 +38,5 @@ export const mySkills = [
 
 export const about = {
   name: "Kunal Roy",
-  description: `I'm a UI/UX-focused Frontend Developer and an hobby Artist. I like to build clean and responsive UI. I have a keen eye for design and committed to continuous learning.`,
+  description: `I'm a UI/UX-focused Frontend Developer and a hobby Artist. I like to build clean and responsive UI. I have a keen eye for design and committed to continuous learning.`,
 };

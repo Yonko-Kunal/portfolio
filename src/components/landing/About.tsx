@@ -12,7 +12,7 @@ export default function About() {
     <Container className="mb-8 flex flex-col gap-8">
       {/* About me */}
       <div className="flex flex-col gap-4">
-        <SectionHeading subHeading="About" heading="Who i am ?" />
+        <SectionHeading subHeading="About" heading="Who am I ?" />
         <div className="flex flex-col gap-4 md:flex-row">
           <Image
             src="/assets/me.png"
@@ -21,13 +21,13 @@ export default function About() {
             height={300}
             className="size-40 rounded-md bg-white object-cover"
           />
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-center gap-8">
             <p className="text-secondary">{about.description}</p>
             <a
               href="https://www.linkedin.com/in/kunal-roy/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex cursor-pointer items-center gap-2 self-end rounded-full bg-[#25B256] py-2.5 pr-4 pl-6 font-semibold tracking-tight text-black transition-all duration-300 hover:gap-3 hover:bg-[#25B256]/80"
+              className="group flex cursor-pointer items-center gap-2 self-end rounded-full bg-(--button-primary) py-2.5 pr-4 pl-6 font-semibold tracking-tight text-black transition-all duration-300 hover:gap-3 hover:bg-(--button-primary)/80 md:self-start"
             >
               Let's connect{" "}
               <span className="transition-transform duration-300 group-hover:rotate-45">

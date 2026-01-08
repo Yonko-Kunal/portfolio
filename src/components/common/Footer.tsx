@@ -5,7 +5,7 @@ import { footerConfig } from "@/config/Footer";
 
 export default function Footer() {
   return (
-    <Container className="py-16">
+    <Container className="py-8">
       <div className="flex flex-col items-center justify-center">
         <p className="text-secondary text-center text-sm">
           {footerConfig.text} <b>{footerConfig.developer}</b> <br /> &copy;{" "}
