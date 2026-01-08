@@ -12,9 +12,9 @@ export interface PageMeta {
 // Base site configuration
 export const siteConfig = {
   name: heroConfig.name,
-  title: "Portfolio",
+  title: "Kunal Roy Portfolio",
   description:
-    "Full Stack web developer and design enthusiast specialized in building MVPs. Expert in Next.js, React, and Node.js.",
+    "UI/UX-focused Frontend Developer and a hobby Artist. Expert in Figma designing and developing clean and responsive UI. Good in frontend development and UI/UX design.",
   url: process.env.NEXT_PUBLIC_URL || "http://localhost:3000",
   ogImage: "/meta/opengraph-image.png",
   author: {
@@ -25,9 +25,10 @@ export const siteConfig = {
     email: "kunalroy267483@gmail.com",
   },
   keywords: [
+    "frontend",
+    "UI/UX",
     "portfolio",
     "developer",
-    "full-stack",
     "react",
     "nextjs",
     "typescript",
