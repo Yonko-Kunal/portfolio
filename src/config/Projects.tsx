@@ -10,9 +10,12 @@ import Shadcn from "@/components/technologies/Shadcn";
 import JavaScript from "@/components/technologies/JavaScript";
 
 // Static image imports for blur placeholder
-import valorantImage from "@/../public/project/valorant.png";
-import chatLLMImage from "@/../public/project/ChatLLM.png";
-import ipoWatchDogImage from "@/../public/project/ipo-watchdog.png";
+import valorantImage from "@/../public/project/Valorant/valorant.png";
+import valorantLogo from "@/../public/project/Valorant/valoLogo.png";
+import chatLLMImage from "@/../public/project/ChatLLM/ChatLLM.png";
+import chatLLMLogo from "@/../public/project/ChatLLM/chaTLLMlogo.png";
+import ipoWatchDogImage from "@/../public/project/IPO/ipo-watchdog.png";
+import ipoWatchDogLogo from "@/../public/project/IPO/IPO.png";
 
 export const projects: Project[] = [
   // {
@@ -43,6 +46,7 @@ export const projects: Project[] = [
     description:
       "A smooth, animated recreation of the VALORANT landing page with interactive sections and an engaging, browsing experience.",
     image: valorantImage,
+    logo: valorantLogo,
     // video:
     //   "https://ik.imagekit.io/z9tc2bt03/valorant-landing.mp4?updatedAt=1765452564782",
     link: "https://valorant-landing-sigma.vercel.app/",
@@ -65,6 +69,7 @@ export const projects: Project[] = [
     description:
       "A multimodal AI chat application leveraging Google's Gemini models for seamless text and image analysis, featuring a responsive, polished dark-mode UI.",
     image: chatLLMImage,
+    logo: chatLLMLogo,
     // video: 'https://ik.imagekit.io/hokb3mrdr/notesbuddy.mp4?tr=orig',
     link: "https://chat-llm-two.vercel.app/",
     technologies: [
@@ -85,6 +90,7 @@ export const projects: Project[] = [
     description:
       "IPO Watchdog monitors upcoming IPOs and public filings to keep users informed about new company listings. It aggregates public market and SEC filing data, tracks IPO calendars/pricing, and notifies users of important IPO events and changes.",
     image: ipoWatchDogImage,
+    logo: ipoWatchDogLogo,
     // video: 'https://ik.imagekit.io/hokb3mrdr/notesbuddy.mp4?tr=orig',
     link: "https://ipo-watchdog.vercel.app/",
     technologies: [

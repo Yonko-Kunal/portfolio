@@ -4,6 +4,7 @@ export interface Project {
   title: string;
   description: string;
   image: string | StaticImageData;
+  logo: string | StaticImageData;
   video?: string;
   link: string;
   technologies: { name: string; icon: React.ReactNode }[];
@@ -18,6 +19,7 @@ export interface ProjectCaseStudyFrontmatter {
   title: string;
   description: string;
   image: string;
+  logo: string;
   technologies: string[];
   github: string;
   live: string;
