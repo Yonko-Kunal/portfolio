@@ -86,7 +86,7 @@ export const projects: Project[] = [
     isWorking: true,
   },
   {
-    title: "Ipo WatchDog",
+    title: "IPO WatchDog",
     description:
       "IPO Watchdog monitors upcoming IPOs and public filings to keep users informed about new company listings. It aggregates public market and SEC filing data, tracks IPO calendars/pricing, and notifies users of important IPO events and changes.",
     image: ipoWatchDogImage,

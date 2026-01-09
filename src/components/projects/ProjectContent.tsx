@@ -56,8 +56,6 @@ export async function ProjectContent({
               fill
               className="object-cover"
               priority
-              blurDataURL={image}
-              placeholder="blur"
               style={{}}
             />
           </div>
