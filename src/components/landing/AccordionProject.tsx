@@ -51,7 +51,7 @@ const AccordionProject = () => {
             >
               <AccordionTrigger className="py-6 hover:no-underline">
                 <div className="flex w-full cursor-pointer items-center gap-4 px-4">
-                  <div className="relative size-12 overflow-hidden rounded-md bg-black/5 md:size-15 dark:bg-white/5">
+                  <div className="relative size-12 overflow-hidden rounded-md bg-black/5 dark:bg-white/5">
                     <Image
                       src={project.logo}
                       alt={project.title}
