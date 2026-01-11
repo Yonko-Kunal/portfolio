@@ -1,5 +1,6 @@
 "use client";
 
+import { ProjectImage } from "./ProjectImage";
 import { projects } from "@/config/Projects";
 import React, { useState } from "react";
 import {
@@ -21,7 +22,7 @@ import { motion, AnimatePresence } from "motion/react";
 import Play from "../svgs/Play";
 import { Button } from "../ui/button";
 import SectionHeading from "../common/SectionHeading";
-import { Github } from "lucide-react";
+import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 
 const AccordionProject = () => {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
@@ -90,17 +91,13 @@ const AccordionProject = () => {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
                   {/* Main Image */}
-                  <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-white/5">
-                    <Link href={project.projectDetailsPageSlug}>
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="cursor-pointer object-cover transition-all duration-500 hover:scale-105"
-                        placeholder="blur"
-                      />
-                    </Link>
-                  </div>
+                  <ProjectImage
+                    src={project.image}
+                    alt={project.title}
+                    href={project.projectDetailsPageSlug}
+                    title={project.title}
+                    category={project.description}
+                  />
 
                   {/* Description */}
                   <p className="text-secondary line-clamp-3 text-[16px]">

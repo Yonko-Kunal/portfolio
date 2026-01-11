@@ -12,6 +12,7 @@ import { ViewTransitions } from "next-view-transitions";
 import ThemeAwareToaster from "@/components/common/ThemeAwareToaster";
 import { siteConfig } from "@/config/Meta";
 import BottomBlur from "@/components/common/BottomBlur";
+import { ReactLenis } from "@/lib/lenis";
 
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
@@ -62,29 +63,31 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en" suppressHydrationWarning>
-        <body
-          className={`${plexMono.variable} ${plexSans.variable} ${plexSans.className} antialiased`}
-          suppressHydrationWarning
-        >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange={false}
-            storageKey="theme"
+        <ReactLenis root>
+          <body
+            className={`${plexMono.variable} ${plexSans.variable} ${plexSans.className} antialiased`}
+            suppressHydrationWarning
           >
-            <TooltipProvider>
-              <Navbar />
-              <BottomBlur />
-              {children}
-              <OnekoCat />
-              <Quote />
-              <Footer />
-              <ThemeAwareToaster />
-            </TooltipProvider>
-          </ThemeProvider>
-          <Analytics />
-        </body>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange={false}
+              storageKey="theme"
+            >
+              <TooltipProvider>
+                <Navbar />
+                <BottomBlur />
+                {children}
+                <OnekoCat />
+                <Quote />
+                <Footer />
+                <ThemeAwareToaster />
+              </TooltipProvider>
+            </ThemeProvider>
+            <Analytics />
+          </body>
+        </ReactLenis>
       </html>
     </ViewTransitions>
   );

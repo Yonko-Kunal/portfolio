@@ -1,3 +1,4 @@
+import { BackButton } from "@/components/common/BackButton";
 import Container from "@/components/common/Container";
 import { ProjectContent } from "@/components/projects/ProjectContent";
 import { ProjectNavigation } from "@/components/projects/ProjectNavigation";
@@ -82,12 +83,7 @@ export default async function ProjectCaseStudyPage({
       <div className="space-y-12">
         {/* Back Button */}
         <div>
-          <Button variant="ghost" asChild className="group">
-            <Link href="/projects" className="flex items-center space-x-2">
-              <ArrowLeft className="size-4" />
-              <span>Back to Projects</span>
-            </Link>
-          </Button>
+          <BackButton />
         </div>
 
         {/* Project Content */}
