@@ -12,8 +12,8 @@ import JavaScript from "@/components/technologies/JavaScript";
 // Static image imports for blur placeholder
 import valorantImage from "@/../public/project/Valorant/valo.png";
 import valorantLogo from "@/../public/project/Valorant/valoLogo.png";
-import chatLLMImage from "@/../public/project/ChatLLM/Chatllm.png";
-import chatLLMLogo from "@/../public/project/ChatLLM/chaTLLMlogo.png";
+import chatLLMImage from "@/../public/project/chat-llm/Chatllm.png";
+import chatLLMLogo from "@/../public/project/chat-llm/chaTLLMlogo.png";
 import ipoWatchDogImage from "@/../public/project/IPO/IPO-hero.png";
 import ipoWatchDogLogo from "@/../public/project/IPO/IPO.png";
 
