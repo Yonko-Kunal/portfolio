@@ -49,7 +49,10 @@ export async function ProjectContent({
       <article>
         {/* Hero Section */}
         <header className="mb-8 space-y-6">
-          <div className="relative aspect-video overflow-hidden">
+          <div
+            className="relative aspect-video overflow-hidden"
+            suppressHydrationWarning
+          >
             <Image
               src={image}
               alt={title}

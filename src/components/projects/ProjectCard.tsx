@@ -61,19 +61,18 @@ export function ProjectCard({ project }: ProjectCardProps) {
       initial="initial"
       whileHover="hover"
       animate={isMobile ? "hover" : "initial"}
-      className="group h-full w-full overflow-hidden rounded-none border-black/5 p-0 shadow-none transition-all dark:border-white/5"
+      className="group dark:border-white/5-500 h-full w-full overflow-hidden rounded-none border-black/5 p-0 shadow-none transition-all"
     >
       <CardHeader className="p-0">
         <div className="group relative aspect-video overflow-hidden">
           <Link href={project.projectDetailsPageSlug}>
             <Image
-              className="h-full w-full cursor-pointer object-cover transition-all duration-300 group-hover:scale-105"
+              className="h-full w-full cursor-pointer rounded-2xl object-cover p-2 transition-all duration-300"
               src={project.image}
               alt={project.title}
               width={500}
               height={500}
-              placeholder="blur"
-              style={{}}
+              // placeholder="blur"
             />
           </Link>
           {project.video && (
