@@ -44,7 +44,7 @@ export default function NotFound() {
           priority
           width={420}
           height={420}
-          quality={90}
+          quality={75}
         />
 
         {/* Error Message Section */}
