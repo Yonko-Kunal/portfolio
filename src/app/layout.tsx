@@ -13,6 +13,7 @@ import ThemeAwareToaster from "@/components/common/ThemeAwareToaster";
 import { siteConfig } from "@/config/Meta";
 import BottomBlur from "@/components/common/BottomBlur";
 import { ReactLenis } from "@/lib/lenis";
+import ScrollToTop from "@/components/common/ScrollToTop";
 
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({
             >
               <TooltipProvider>
                 <Navbar />
+                <ScrollToTop />
                 <BottomBlur />
                 {children}
                 <OnekoCat />
