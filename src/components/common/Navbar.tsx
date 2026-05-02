@@ -23,6 +23,10 @@ const Navbar = () => {
       title: "Blogs",
       href: "/blogs",
     },
+    {
+      title: "Work",
+      href: "/work-experience",
+    },
   ];
 
   const { avatar } = heroConfig;

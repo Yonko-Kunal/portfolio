@@ -309,3 +309,9 @@ iframe {
 @keyframes fade-out {
   to { opacity: 0; }
 }
+
+::selection {
+    background: oklch(82.032% 0.00009 271.152);
+    color: oklch(20.49% 0 0);
+  }
+

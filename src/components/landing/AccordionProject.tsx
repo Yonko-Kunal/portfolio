@@ -57,6 +57,7 @@ const AccordionProject = () => {
                       src={project.logo}
                       alt={project.title}
                       fill
+                      sizes="48px"
                       className="object-cover"
                       placeholder="blur"
                     />

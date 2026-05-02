@@ -32,11 +32,12 @@ export function ProjectImage({
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <Link href={href}>
+      <Link href={href} className="relative block h-full w-full">
         <Image
           src={src}
           alt={alt}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
           className="cursor-pointer object-cover transition-all duration-500 hover:scale-105"
           placeholder="blur"
         />

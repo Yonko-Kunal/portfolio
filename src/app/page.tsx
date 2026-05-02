@@ -3,7 +3,7 @@ import About from "@/components/landing/About";
 import AccordionProject from "@/components/landing/AccordionProject";
 import Hero from "@/components/landing/Hero";
 import Projects from "@/components/landing/Projects";
-// import Experience from "@/components/landing/Experience";
+import Experience from "@/components/landing/Experience";
 import Socials from "@/components/landing/Socials";
 import { GitHubContributions } from "@/components/landing/Github-Contributions";
 import { cn } from "@/lib/utils";
@@ -16,7 +16,7 @@ export default function Home() {
       {/* <Spotify /> */}
       <Socials />
       {/* <Projects /> */}
-      {/* <Experience /> */}
+      <Experience />
       <AccordionProject />
       <GitHubContributions />
       <About />

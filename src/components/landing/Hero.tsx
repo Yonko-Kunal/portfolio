@@ -65,7 +65,7 @@ export default function Hero() {
       <div className="mt-12 flex flex-col gap-8 md:mt-16">
         <div className="flex flex-col items-start gap-2 md:gap-3">
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl leading-tight font-semibold md:text-3xl">
+            <h1 className="text-2xl leading-tight font-bold md:text-3xl">
               {name}
             </h1>
             <BlueTick />

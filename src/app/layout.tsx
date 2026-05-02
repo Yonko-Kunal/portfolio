@@ -1,6 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Mulish } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -26,6 +26,13 @@ const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700"],
   variable: "--font-plex-sans",
+  display: "swap",
+});
+
+const mulish = Mulish({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700"],
+  variable: "--font-mulish",
   display: "swap",
 });
 
@@ -66,7 +73,7 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <ReactLenis root>
           <body
-            className={`${plexMono.variable} ${plexSans.variable} ${plexSans.className} antialiased`}
+            className={`${plexMono.variable} ${plexSans.variable} ${mulish.className} antialiased`}
             suppressHydrationWarning
           >
             <ThemeProvider
