@@ -26,7 +26,11 @@ export const skillComponents = {
 export const heroConfig = {
   // Personal Information
   name: "Kunal Roy",
-  title: ["A UI/UX designer.", "A Design Enthusiast.", "Small details matter."],
+  title: [
+    "A Frontend Engineer.",
+    "A Design Enthusiast.",
+    "Small details matter.",
+  ],
   avatar: "/assets/logoNew.png",
   banner: bannerImage,
   role: "UI/UX Focused Frontend Developer and Design Enthusiast.",
