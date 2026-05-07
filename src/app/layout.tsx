@@ -1,19 +1,23 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, Mulish } from "next/font/google";
+
 import "./globals.css";
+
 import Navbar from "@/components/common/Navbar";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import Footer from "@/components/common/Footer";
-import { Quote } from "@/components/common/Quote";
-import { ThemeProvider } from "next-themes";
-import OnekoCat from "@/components/common/OnekoCat";
-import { ViewTransitions } from "next-view-transitions";
-import ThemeAwareToaster from "@/components/common/ThemeAwareToaster";
-import { siteConfig } from "@/config/Meta";
 import BottomBlur from "@/components/common/BottomBlur";
-import { ReactLenis } from "@/lib/lenis";
+import OnekoCat from "@/components/common/OnekoCat";
 import ScrollToTop from "@/components/common/ScrollToTop";
+import ThemeAwareToaster from "@/components/common/ThemeAwareToaster";
+import { Quote } from "@/components/common/Quote";
+
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { ReactLenis } from "@/lib/lenis";
+
+
+import { siteConfig } from "@/config/Meta";
+import Providers from "@/components/providers";
 
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
@@ -41,7 +45,13 @@ export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
   keywords: siteConfig.keywords,
-  authors: [{ name: siteConfig.author.name }],
+
+  authors: [
+    {
+      name: siteConfig.author.name,
+    },
+  ],
+
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -49,6 +59,7 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.name,
+
     images: [
       {
         url: siteConfig.ogImage,
@@ -58,6 +69,7 @@ export const metadata: Metadata = {
       },
     ],
   },
+
   verification: {
     google: "c2bt68PTX0f7gyu3DsL8LcN9f3zYcRaeRg41lNKOORA",
   },
@@ -69,35 +81,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ViewTransitions>
-      <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className={`${plexMono.variable} ${plexSans.variable} ${mulish.className} antialiased`}
+      >
         <ReactLenis root>
-          <body
-            className={`${plexMono.variable} ${plexSans.variable} ${mulish.className} antialiased`}
-            suppressHydrationWarning
-          >
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange={false}
-              storageKey="theme"
-            >
-              <TooltipProvider>
-                <Navbar />
-                <ScrollToTop />
-                <BottomBlur />
-                {children}
-                <OnekoCat />
-                <Quote />
-                <Footer />
-                <ThemeAwareToaster />
-              </TooltipProvider>
-            </ThemeProvider>
-            <Analytics />
-          </body>
+          <Providers>
+            <TooltipProvider>
+              <Navbar />
+              <ScrollToTop />
+              <BottomBlur />
+
+              {children}
+
+              <OnekoCat />
+              <Quote />
+              <Footer />
+              <ThemeAwareToaster />
+            </TooltipProvider>
+          </Providers>
+
+          <Analytics />
         </ReactLenis>
-      </html>
-    </ViewTransitions>
+      </body>
+    </html>
   );
 }
