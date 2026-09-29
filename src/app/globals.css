@@ -99,7 +99,9 @@
   --sidebar-ring: oklch(0.708 0 0);
   /* --edge: color-mix(in oklab, var(--border) 64%, var(--background)); */
   --text-secondary: oklch(0% 0 0);
-
+  --click-x: 50%;
+  --click-y: 50%;
+  --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dark {
@@ -281,33 +283,49 @@ iframe {
 
 /* View Transition Tuning */
 
-/* Global transition speed and easing (Motion-like) */
 ::view-transition-group(*) {
-  animation-duration: 0.6s;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.4, 111, 0.2, 1.3);
 }
 
-/* Fix Z-index - ensure root is below custom elements */
 ::view-transition-group(root) {
+  z-index: auto;
+}
+
+/* Keep the old page stationary underneath without cross-fade flicker */
+::view-transition-old(root),
+.dark::view-transition-old(root) {
+  animation: none;
   z-index: -1;
 }
 
-/* Remove default blur/cross-fade artifacts for the root */
-/* We'll use a simple fade instead of the default browser blend */
-::view-transition-old(root) {
-  animation: 1000ms cubic-bezier(0.4, 0, 0.2, 1) both fade-out;
+/* Reveal the new page with a circular expanding mask and soft blur */
+::view-transition-new(root),
+.dark::view-transition-new(root) {
+  animation: 1000ms cubic-bezier(0.4, 0, 0.2, 1) both circle-reveal;
+  filter: blur(2px);
 }
 
-::view-transition-new(root) {
-  animation: 1000ms cubic-bezier(0.4, 0, 0.2, 1) both fade-in;
+@keyframes circle-reveal {
+  from {
+    clip-path: circle(0px at var(--click-x, 50%) var(--click-y, 50%));
+    filter: blur(8px);
+  }
+  50% {
+    filter: blur(4px);
+  }
+  to {
+    clip-path: circle(150vmax at var(--click-x, 50%) var(--click-y, 50%));
+    filter: blur(0px);
+  }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-}
-
-@keyframes fade-out {
-  to { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
 
 ::selection {

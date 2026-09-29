@@ -88,7 +88,11 @@ export const useThemeToggle = ({
         return;
       }
 
-      document.startViewTransition(switchTheme);
+      const transition = document.startViewTransition(switchTheme);
+      transition?.finished?.finally(() => {
+        const el = document.getElementById(styleId);
+        if (el) el.remove();
+      });
     },
     [
       theme,
@@ -123,7 +127,11 @@ export const useThemeToggle = ({
         return;
       }
 
-      document.startViewTransition(switchTheme);
+      const transition = document.startViewTransition(switchTheme);
+      transition?.finished?.finally(() => {
+        const el = document.getElementById(styleId);
+        if (el) el.remove();
+      });
     },
     [setTheme, variant, start, blur, gifUrl, updateStyles, setIsDark],
   );
@@ -148,7 +156,11 @@ export const useThemeToggle = ({
         return;
       }
 
-      document.startViewTransition(switchTheme);
+      const transition = document.startViewTransition(switchTheme);
+      transition?.finished?.finally(() => {
+        const el = document.getElementById(styleId);
+        if (el) el.remove();
+      });
     },
     [setTheme, variant, start, blur, gifUrl, updateStyles, setIsDark],
   );

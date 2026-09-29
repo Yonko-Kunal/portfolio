@@ -18,6 +18,7 @@ import { ReactLenis } from "@/lib/lenis";
 
 import { siteConfig } from "@/config/Meta";
 import Providers from "@/components/providers";
+import { ViewTransitions } from "next-view-transitions";
 
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
@@ -81,30 +82,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        suppressHydrationWarning
-        className={`${plexMono.variable} ${plexSans.variable} ${mulish.className} antialiased`}
-      >
-        <ReactLenis root>
-          <Providers>
-            <TooltipProvider>
-              <Navbar />
-              <ScrollToTop />
-              <BottomBlur />
+    <ViewTransitions>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          suppressHydrationWarning
+          className={`${plexMono.variable} ${plexSans.variable} ${mulish.className} antialiased`}
+        >
+          <ReactLenis root>
+            <Providers>
+              <TooltipProvider>
+                <Navbar />
+                <ScrollToTop />
+                <BottomBlur />
 
-              {children}
+                {children}
 
-              <OnekoCat />
-              <Quote />
-              <Footer />
-              <ThemeAwareToaster />
-            </TooltipProvider>
-          </Providers>
+                <OnekoCat />
+                <Quote />
+                <Footer />
+                <ThemeAwareToaster />
+              </TooltipProvider>
+            </Providers>
 
-          <Analytics />
-        </ReactLenis>
-      </body>
-    </html>
+            <Analytics />
+          </ReactLenis>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
