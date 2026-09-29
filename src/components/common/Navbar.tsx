@@ -149,7 +149,7 @@ const Navbar = () => {
             </ul>
           </div>
           <Separator orientation="vertical" className="h-6! w-px!" />
-          <ThemeToggleButton variant="circle" start="top-right" blur />
+          <ThemeToggleButton variant="circle" start="dynamic" blur />
         </div>
       </motion.nav>
     </MotionContainer>

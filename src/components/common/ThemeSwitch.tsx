@@ -46,78 +46,112 @@ export const useThemeToggle = ({
     console.log("content updated");
   }, []);
 
-  const toggleTheme = useCallback(() => {
-    setIsDark(!isDark);
-
-    const animation = createAnimation(variant, start, blur, gifUrl);
-
-    updateStyles(animation.css, animation.name);
-
-    if (typeof window === "undefined") return;
-
-    const switchTheme = () => {
-      setTheme(theme === "light" ? "dark" : "light");
-    };
-
-    if (!document.startViewTransition) {
-      switchTheme();
-      return;
+  const getClickCoords = (
+    event?: React.MouseEvent<HTMLElement> | MouseEvent,
+  ) => {
+    if (event && (event.clientX !== 0 || event.clientY !== 0)) {
+      return { x: event.clientX, y: event.clientY };
     }
-
-    document.startViewTransition(switchTheme);
-  }, [
-    theme,
-    setTheme,
-    variant,
-    start,
-    blur,
-    gifUrl,
-    updateStyles,
-    isDark,
-    setIsDark,
-  ]);
-
-  const setCrazyLightTheme = useCallback(() => {
-    setIsDark(false);
-
-    const animation = createAnimation(variant, start, blur, gifUrl);
-
-    updateStyles(animation.css, animation.name);
-
-    if (typeof window === "undefined") return;
-
-    const switchTheme = () => {
-      setTheme("light");
-    };
-
-    if (!document.startViewTransition) {
-      switchTheme();
-      return;
+    if (event && event.currentTarget) {
+      const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+      return {
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+      };
     }
-
-    document.startViewTransition(switchTheme);
-  }, [setTheme, variant, start, blur, gifUrl, updateStyles, setIsDark]);
-
-  const setCrazyDarkTheme = useCallback(() => {
-    setIsDark(true);
-
-    const animation = createAnimation(variant, start, blur, gifUrl);
-
-    updateStyles(animation.css, animation.name);
-
-    if (typeof window === "undefined") return;
-
-    const switchTheme = () => {
-      setTheme("dark");
-    };
-
-    if (!document.startViewTransition) {
-      switchTheme();
-      return;
+    if (typeof window !== "undefined") {
+      return {
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+      };
     }
+    return undefined;
+  };
 
-    document.startViewTransition(switchTheme);
-  }, [setTheme, variant, start, blur, gifUrl, updateStyles, setIsDark]);
+  const toggleTheme = useCallback(
+    (event?: React.MouseEvent<HTMLElement> | MouseEvent) => {
+      setIsDark(!isDark);
+
+      const coords = start === "dynamic" ? getClickCoords(event) : undefined;
+      const animation = createAnimation(variant, start, blur, gifUrl, coords);
+
+      updateStyles(animation.css, animation.name);
+
+      if (typeof window === "undefined") return;
+
+      const switchTheme = () => {
+        setTheme(theme === "light" ? "dark" : "light");
+      };
+
+      if (!document.startViewTransition) {
+        switchTheme();
+        return;
+      }
+
+      document.startViewTransition(switchTheme);
+    },
+    [
+      theme,
+      setTheme,
+      variant,
+      start,
+      blur,
+      gifUrl,
+      updateStyles,
+      isDark,
+      setIsDark,
+    ],
+  );
+
+  const setCrazyLightTheme = useCallback(
+    (event?: React.MouseEvent<HTMLElement> | MouseEvent) => {
+      setIsDark(false);
+
+      const coords = start === "dynamic" ? getClickCoords(event) : undefined;
+      const animation = createAnimation(variant, start, blur, gifUrl, coords);
+
+      updateStyles(animation.css, animation.name);
+
+      if (typeof window === "undefined") return;
+
+      const switchTheme = () => {
+        setTheme("light");
+      };
+
+      if (!document.startViewTransition) {
+        switchTheme();
+        return;
+      }
+
+      document.startViewTransition(switchTheme);
+    },
+    [setTheme, variant, start, blur, gifUrl, updateStyles, setIsDark],
+  );
+
+  const setCrazyDarkTheme = useCallback(
+    (event?: React.MouseEvent<HTMLElement> | MouseEvent) => {
+      setIsDark(true);
+
+      const coords = start === "dynamic" ? getClickCoords(event) : undefined;
+      const animation = createAnimation(variant, start, blur, gifUrl, coords);
+
+      updateStyles(animation.css, animation.name);
+
+      if (typeof window === "undefined") return;
+
+      const switchTheme = () => {
+        setTheme("dark");
+      };
+
+      if (!document.startViewTransition) {
+        switchTheme();
+        return;
+      }
+
+      document.startViewTransition(switchTheme);
+    },
+    [setTheme, variant, start, blur, gifUrl, updateStyles, setIsDark],
+  );
 
   return {
     isDark,
@@ -136,12 +170,14 @@ export const ThemeToggleButton = ({
   start = "center",
   blur = false,
   gifUrl = "",
+  onClick,
 }: {
   className?: string;
   variant?: AnimationVariant;
   start?: AnimationStart;
   blur?: boolean;
   gifUrl?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
   const { isDark, toggleTheme } = useThemeToggle({
     variant,
@@ -149,6 +185,11 @@ export const ThemeToggleButton = ({
     blur,
     gifUrl,
   });
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    toggleTheme(e);
+    onClick?.(e);
+  };
 
   return (
     <Button
@@ -159,7 +200,7 @@ export const ThemeToggleButton = ({
         "size-10 cursor-pointer p-0 transition-all duration-300 active:scale-95",
         className,
       )}
-      onClick={toggleTheme}
+      onClick={handleClick}
       aria-label="Toggle theme"
     >
       <span className="sr-only">Toggle theme</span>
@@ -205,14 +246,18 @@ export type AnimationStart =
   | "bottom-up"
   | "top-down"
   | "left-right"
-  | "right-left";
+  | "right-left"
+  | "dynamic";
 
 interface Animation {
   name: string;
   css: string;
 }
 
-const getPositionCoords = (position: AnimationStart) => {
+const getPositionCoords = (
+  position: AnimationStart,
+  coords?: { x: number; y: number },
+) => {
   switch (position) {
     case "top-left":
       return { cx: "0", cy: "0" };
@@ -226,6 +271,19 @@ const getPositionCoords = (position: AnimationStart) => {
       return { cx: "20", cy: "0" };
     case "bottom-center":
       return { cx: "20", cy: "40" };
+    case "dynamic":
+      if (
+        coords &&
+        typeof window !== "undefined" &&
+        window.innerWidth > 0 &&
+        window.innerHeight > 0
+      ) {
+        return {
+          cx: ((coords.x / window.innerWidth) * 40).toFixed(2),
+          cy: ((coords.y / window.innerHeight) * 40).toFixed(2),
+        };
+      }
+      return { cx: "20", cy: "20" };
     // For directional positions, default to center (these are used for rectangle variant)
     case "bottom-up":
     case "top-down":
@@ -235,13 +293,17 @@ const getPositionCoords = (position: AnimationStart) => {
   }
 };
 
-const generateSVG = (variant: AnimationVariant, start: AnimationStart) => {
+const generateSVG = (
+  variant: AnimationVariant,
+  start: AnimationStart,
+  coords?: { x: number; y: number },
+) => {
   // circle-blur variant handles center case differently, so check it first
   if (variant === "circle-blur") {
     if (start === "center") {
       return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="20" cy="20" r="18" fill="white" filter="url(%23blur)"/></svg>`;
     }
-    const positionCoords = getPositionCoords(start);
+    const positionCoords = getPositionCoords(start, coords);
     if (!positionCoords) {
       throw new Error(`Invalid start position: ${start}`);
     }
@@ -254,7 +316,7 @@ const generateSVG = (variant: AnimationVariant, start: AnimationStart) => {
   // Rectangle variant doesn't use SVG masks, so return early
   if (variant === "rectangle") return "";
 
-  const positionCoords = getPositionCoords(start);
+  const positionCoords = getPositionCoords(start, coords);
   if (!positionCoords) {
     throw new Error(`Invalid start position: ${start}`);
   }
@@ -267,7 +329,10 @@ const generateSVG = (variant: AnimationVariant, start: AnimationStart) => {
   return "";
 };
 
-const getTransformOrigin = (start: AnimationStart) => {
+const getTransformOrigin = (
+  start: AnimationStart,
+  coords?: { x: number; y: number },
+) => {
   switch (start) {
     case "top-left":
       return "top left";
@@ -281,6 +346,11 @@ const getTransformOrigin = (start: AnimationStart) => {
       return "top center";
     case "bottom-center":
       return "bottom center";
+    case "dynamic":
+      if (coords) {
+        return `${coords.x}px ${coords.y}px`;
+      }
+      return "center";
     case "bottom-up":
     case "top-down":
     case "left-right":
@@ -294,9 +364,10 @@ export const createAnimation = (
   start: AnimationStart = "center",
   blur = false,
   url?: string,
+  coords?: { x: number; y: number },
 ): Animation => {
-  const svg = generateSVG(variant, start);
-  const transformOrigin = getTransformOrigin(start);
+  const svg = generateSVG(variant, start, coords);
+  const transformOrigin = getTransformOrigin(start, coords);
 
   if (variant === "rectangle") {
     const getClipPath = (direction: AnimationStart) => {
@@ -517,6 +588,11 @@ export const createAnimation = (
       };
     }
 
+    const maskPosition =
+      start === "dynamic" && coords
+        ? `${coords.x}px ${coords.y}px`
+        : start.replace("-", " ");
+
     return {
       name: `${variant}-${start}`,
       css: `
@@ -525,7 +601,7 @@ export const createAnimation = (
       }
 
       ::view-transition-new(root) {
-        mask: url('${svg}') ${start.replace("-", " ")} / 0 no-repeat;
+        mask: url('${svg}') ${maskPosition} / 0 no-repeat;
         mask-origin: content-box;
         animation: scale 1s;
         transform-origin: ${transformOrigin};
@@ -643,6 +719,11 @@ export const createAnimation = (
           return "50% 0%";
         case "bottom-center":
           return "50% 100%";
+        case "dynamic":
+          if (coords) {
+            return `${coords.x}px ${coords.y}px`;
+          }
+          return "50% 50%";
         default:
           return "50% 50%";
       }
@@ -650,8 +731,26 @@ export const createAnimation = (
 
     const clipPosition = getClipPathPosition(start);
 
+    const maxRadius =
+      typeof window !== "undefined" && coords
+        ? Math.ceil(
+            Math.hypot(
+              Math.max(coords.x, window.innerWidth - coords.x),
+              Math.max(coords.y, window.innerHeight - coords.y),
+            ),
+          )
+        : null;
+
+    const fromRadius = maxRadius !== null ? "0px" : "0%";
+    const toRadius = maxRadius !== null ? `${maxRadius}px` : "150.0%";
+
+    const animSuffix =
+      start === "dynamic" && coords
+        ? `-${Math.round(coords.x)}-${Math.round(coords.y)}`
+        : "";
+
     return {
-      name: `${variant}-${start}${blur ? "-blur" : ""}`,
+      name: `${variant}-${start}${animSuffix}${blur ? "-blur" : ""}`,
       css: `
        ::view-transition-group(root) {
         animation-duration: 1.1s;
@@ -659,7 +758,7 @@ export const createAnimation = (
       }
             
       ::view-transition-new(root) {
-        animation-name: reveal-light-${start}${blur ? "-blur" : ""};
+        animation-name: reveal-light-${start}${animSuffix}${blur ? "-blur" : ""};
         ${blur ? "filter: blur(2px);" : ""}
       }
 
@@ -669,36 +768,41 @@ export const createAnimation = (
         z-index: -1;
       }
       .dark::view-transition-new(root) {
-        animation-name: reveal-dark-${start}${blur ? "-blur" : ""};
+        animation-name: reveal-dark-${start}${animSuffix}${blur ? "-blur" : ""};
         ${blur ? "filter: blur(2px);" : ""}
       }
 
-      @keyframes reveal-dark-${start}${blur ? "-blur" : ""} {
+      @keyframes reveal-dark-${start}${animSuffix}${blur ? "-blur" : ""} {
         from {
-          clip-path: circle(0% at ${clipPosition});
+          clip-path: circle(${fromRadius} at ${clipPosition});
           ${blur ? "filter: blur(8px);" : ""}
         }
         ${blur ? "50% { filter: blur(4px); }" : ""}
         to {
-          clip-path: circle(150.0% at ${clipPosition});
+          clip-path: circle(${toRadius} at ${clipPosition});
           ${blur ? "filter: blur(0px);" : ""}
         }
       }
 
-      @keyframes reveal-light-${start}${blur ? "-blur" : ""} {
+      @keyframes reveal-light-${start}${animSuffix}${blur ? "-blur" : ""} {
         from {
-           clip-path: circle(0% at ${clipPosition});
+           clip-path: circle(${fromRadius} at ${clipPosition});
            ${blur ? "filter: blur(8px);" : ""}
         }
         ${blur ? "50% { filter: blur(4px); }" : ""}
         to {
-          clip-path: circle(150.0% at ${clipPosition});
+          clip-path: circle(${toRadius} at ${clipPosition});
           ${blur ? "filter: blur(0px);" : ""}
         }
       }
       `,
     };
   }
+
+  const maskPosition =
+    start === "dynamic" && coords
+      ? `${coords.x}px ${coords.y}px`
+      : start.replace("-", " ");
 
   return {
     name: `${variant}-${start}${blur ? "-blur" : ""}`,
@@ -707,7 +811,7 @@ export const createAnimation = (
         animation-timing-function: var(--expo-in);
       }
       ::view-transition-new(root) {
-        mask: url('${svg}') ${start.replace("-", " ")} / 0 no-repeat;
+        mask: url('${svg}') ${maskPosition} / 0 no-repeat;
         mask-origin: content-box;
         animation: scale-${start}${blur ? "-blur" : ""} 1s;
         transform-origin: ${transformOrigin};
