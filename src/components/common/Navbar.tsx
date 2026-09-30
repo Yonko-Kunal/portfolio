@@ -51,74 +51,23 @@ const Navbar = () => {
   }, []);
 
   return (
-    <MotionContainer
-      animate={{
-        width: isMobile
-          ? scrolled
-            ? "90%"
-            : "100%"
-          : scrolled
-            ? "36%"
-            : "100%",
-        top: isMobile
-          ? scrolled
-            ? "2%"
-            : "0rem"
-          : scrolled
-            ? "0.75rem"
-            : "0rem",
-      }}
-      style={{
-        border: scrolled ? "" : "none",
-      }}
-      transition={{
-        ease: isMobile ? "circInOut" : "easeInOut",
-        duration: isMobile ? 0.4 : 0.35,
-      }}
-      className="liquidGlass-wrapper sticky z-50 rounded-[15px] py-1 md:rounded-[20px]"
-    >
-      {/* SVG Filter for Liquid Glass Effect - Inside Container */}
-      <svg
-        style={{
-          position: "absolute",
-          width: 0,
-          height: 0,
-          pointerEvents: "none",
-        }}
-        aria-hidden="true"
-      >
-        <defs>
-          <filter id="glass-distortion">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.01 0.01"
-              numOctaves="1"
-              seed="5"
-              result="turbulence"
-            />
-            <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-            <feDisplacementMap in="SourceGraphic" in2="softMap" scale="200" />
-          </filter>
-        </defs>
-      </svg>
 
-      {/* Liquid Glass Effect Layer */}
-      <div className={`liquidGlass-effect ${scrolled ? "scrolled" : ""}`} />
 
-      <motion.nav className="relative z-10 flex items-center justify-between px-2">
-        <div className="flex items-center justify-between">
-          <Link href="/">
-            <div>
-              {/* <Image className='rounded-full transition-all duration-300 ease-in-out hover:scale-90'
+    <motion.nav className="fixed border-b border-currentColor/20 top-0 left-0 right-0 z-9999 flex items-center justify-between px-2 bg-background">
+      <Container className="flex items-center justify-between  max-w-5xl border-l border-r border-currentColor/20 px-1">
+
+        <Link href="/">
+          <div>
+            {/* <Image className='rounded-full transition-all duration-300 ease-in-out hover:scale-90'
                                 src={avatar}
                                 alt="avatar"
                                 width={48}
                                 height={48}
                             /> */}
-              <Logo className="h-10 w-10 text-black transition-all duration-300 ease-in-out md:h-10 md:w-10 dark:text-white" />
-            </div>
-          </Link>
-        </div>
+            <Logo className="h-10 w-10 text-black transition-all duration-300 ease-in-out md:h-10 md:w-10 dark:text-white" />
+          </div>
+        </Link>
+
         <div className="flex items-center">
           <div>
             <ul className="flex gap-1 p-2 pr-0 md:p-1">
@@ -151,8 +100,8 @@ const Navbar = () => {
           <Separator orientation="vertical" className="h-6! w-px!" />
           <ThemeToggleButton variant="circle" start="dynamic" blur />
         </div>
-      </motion.nav>
-    </MotionContainer>
+      </Container>
+    </motion.nav>
   );
 };
 

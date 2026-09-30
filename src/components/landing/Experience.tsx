@@ -28,7 +28,7 @@ export default function Experience() {
     const totalExperiences = experiences.length;
 
     return (
-        <Container className="mt-20">
+        <Container className="">
             <SectionHeading subHeading="Featured" heading="Experience" />
 
             {/* Featured Experience - Always Expanded */}
