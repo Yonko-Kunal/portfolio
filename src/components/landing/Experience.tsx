@@ -28,36 +28,38 @@ export default function Experience() {
     const totalExperiences = experiences.length;
 
     return (
-        <Container className="">
-            <SectionHeading subHeading="Featured" heading="Experience" />
+        <div className='border-t border-b border-currentColor/20'>
+            <Container className="border-l border-r border-currentColor/20 px-1">
+                <SectionHeading subHeading="Featured" heading="Experience" />
 
-            {/* Featured Experience - Always Expanded */}
-            <div className="mt-8">
-                <ExperienceCard experience={featuredExperience} />
-            </div>
-
-            {/* Other Experiences - Collapsible (Top 3 only) */}
-            <div className="mt-8 flex flex-col gap-8">
-                {otherExperiences.map((experience: Experience) => (
-                    <CollapsibleExperienceCard
-                        key={experience.company}
-                        experience={experience}
-                        isExpanded={expandedItems.has(experience.company)}
-                        onToggle={() => toggleExpanded(experience.company)}
-                    />
-                ))}
-            </div>
-
-            {/* Show All Work Experiences Button */}
-            {totalExperiences > 4 && (
-                <div className="mt-8 flex justify-center">
-                    <Button variant="outline">
-                        <Link href="/work-experience">
-                            Show all work experiences
-                        </Link>
-                    </Button>
+                {/* Featured Experience - Always Expanded */}
+                <div className="mt-8">
+                    <ExperienceCard experience={featuredExperience} />
                 </div>
-            )}
-        </Container>
+
+                {/* Other Experiences - Collapsible (Top 3 only) */}
+                <div className="mt-8 flex flex-col gap-8">
+                    {otherExperiences.map((experience: Experience) => (
+                        <CollapsibleExperienceCard
+                            key={experience.company}
+                            experience={experience}
+                            isExpanded={expandedItems.has(experience.company)}
+                            onToggle={() => toggleExpanded(experience.company)}
+                        />
+                    ))}
+                </div>
+
+                {/* Show All Work Experiences Button */}
+                {totalExperiences > 4 && (
+                    <div className="mt-8 flex justify-center">
+                        <Button variant="outline">
+                            <Link href="/work-experience">
+                                Show all work experiences
+                            </Link>
+                        </Button>
+                    </div>
+                )}
+            </Container>
+        </div>
     );
 }

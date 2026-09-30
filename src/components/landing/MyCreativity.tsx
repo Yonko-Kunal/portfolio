@@ -11,36 +11,38 @@ import work5 from "../../../public/assets/CreativeWork/work5.png";
 
 const MyCreativity = () => {
   return (
-    <Container className="flex flex-col gap-8 overflow-hidden">
-      <SectionHeading subHeading="Creativity" heading="My Creative Works" />
-      <InfiniteSlider speed={70} speedOnHover={1} gap={0}>
-        <Image
-          src={work1}
-          alt="work1"
-          className="h-70 w-60 rounded-md object-contain"
-        />
-        <Image
-          src={work2}
-          alt="work2"
-          className="h-70 w-60 rounded-md object-contain"
-        />
-        <Image
-          src={work3}
-          alt="work3"
-          className="h-70 w-60 rounded-md object-contain"
-        />
-        <Image
-          src={work4}
-          alt="work4"
-          className="h-70 w-60 rounded-md object-contain"
-        />
-        <Image
-          src={work5}
-          alt="work5"
-          className="h-70 w-60 rounded-md object-contain"
-        />
-      </InfiniteSlider>
-    </Container>
+    <div className="border-t border-b border-currentColor/20">
+      <Container className="flex flex-col gap-8 overflow-hidden border-r border-l border-currentColor/20">
+        <SectionHeading className="pl-1" subHeading="Creativity" heading="My Creative Works" />
+        <InfiniteSlider speed={70} speedOnHover={1} gap={0}>
+          <Image
+            src={work1}
+            alt="work1"
+            className="h-70 w-60 rounded-md object-contain"
+          />
+          <Image
+            src={work2}
+            alt="work2"
+            className="h-70 w-60 rounded-md object-contain"
+          />
+          <Image
+            src={work3}
+            alt="work3"
+            className="h-70 w-60 rounded-md object-contain"
+          />
+          <Image
+            src={work4}
+            alt="work4"
+            className="h-70 w-60 rounded-md object-contain"
+          />
+          <Image
+            src={work5}
+            alt="work5"
+            className="h-70 w-60 rounded-md object-contain"
+          />
+        </InfiniteSlider>
+      </Container>
+    </div>
   );
 };
 

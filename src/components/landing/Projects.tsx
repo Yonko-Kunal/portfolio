@@ -11,16 +11,18 @@ import { Button } from "../ui/button";
 
 export default function Projects() {
   return (
-    <Container className="mb-8">
-      <SectionHeading subHeading="Featured" heading="Projects" />
+    <div className='border-t border-b border-currentColor/20 w-full'>
+      <Container className=" border-l border-r border-currentColor/20">
+        <SectionHeading subHeading="Featured" heading="Projects" />
 
-      <ProjectList className="mt-8" projects={projects.slice(0, 4)} />
+        <ProjectList className="mt-8" projects={projects.slice(0, 4)} />
 
-      <div className="mt-8 flex justify-center">
-        <Button variant="outline">
-          <Link href="/projects">Show all projects</Link>
-        </Button>
-      </div>
-    </Container>
+        <div className="mt-8 flex justify-center">
+          <Button variant="outline">
+            <Link href="/projects">Show all projects</Link>
+          </Button>
+        </div>
+      </Container>
+    </div>
   );
 }

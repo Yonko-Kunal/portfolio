@@ -7,41 +7,54 @@ import CursorX from "../svgs/CursorX";
 import CursorGithub from "../svgs/CursorGithub";
 import CursorLinkedIn from "../svgs/CursorLinkedIn";
 import CursorInstagram from "../svgs/CursorInstagram";
+import { cn } from "@/lib/utils";
+
+const socialBorders: Record<string, string> = {
+  x: "border-b border-r",
+  linkedin: "border-t border-r",
+  github: "border-b border-l",
+  instagram: "border-t border-l",
+};
 
 const Socials = () => {
   return (
-    <Container className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2">
-      {Object.entries(socialsConfig).map(([key, social]) => (
-        <a
-          href={social.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          key={key}
-          className="group relative flex cursor-pointer items-center justify-between border border-black/10 p-4 pr-2 transition-all hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/5"
-        >
-          <Pointer className="z-50">
-            {key === "x" && <CursorX />}
-            {key === "github" && <CursorGithub />}
-            {key === "linkedin" && <CursorLinkedIn />}
-            {key === "instagram" && <CursorInstagram />}
-          </Pointer>
-          <div className="flex gap-4">
-            <div className="flex items-center justify-center rounded-2xl border dark:border-white/5">
-              {social.icon}
+    <div className="border-t border-b border-currentColor/20">
+      <Container className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 border-l border-r border-currentColor/20">
+        {Object.entries(socialsConfig).map(([key, social]) => (
+          <a
+            href={social.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={key}
+            className={cn(
+              "group relative flex cursor-pointer items-center justify-between p-4 pr-2 transition-all hover:bg-black/5 dark:hover:bg-white/5 border-currentColor/20",
+              socialBorders[key]
+            )}
+          >
+            <Pointer className="z-50">
+              {key === "x" && <CursorX />}
+              {key === "github" && <CursorGithub />}
+              {key === "linkedin" && <CursorLinkedIn />}
+              {key === "instagram" && <CursorInstagram />}
+            </Pointer>
+            <div className="flex gap-4">
+              <div className="flex items-center justify-center rounded-2xl border dark:border-white/5">
+                {social.icon}
+              </div>
+              <div>
+                <p className="font-medium underline-offset-3 group-hover:underline">
+                  {social.name}
+                </p>
+                <p className="text-secondary text-sm">{social.username}</p>
+              </div>
             </div>
-            <div>
-              <p className="font-medium underline-offset-3 group-hover:underline">
-                {social.name}
-              </p>
-              <p className="text-secondary text-sm">{social.username}</p>
+            <div className="transition-transform group-hover:rotate-45">
+              <LinkArrow />
             </div>
-          </div>
-          <div className="transition-transform group-hover:rotate-45">
-            <LinkArrow />
-          </div>
-        </a>
-      ))}
-    </Container>
+          </a>
+        ))}
+      </Container>
+    </div>
   );
 };
 
