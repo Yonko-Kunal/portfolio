@@ -24,8 +24,8 @@ export const socialsConfig = {
   },
   instagram: {
     name: "Instagram",
-    username: "kunal_r0y",
+    username: "5.kunal_7",
     icon: <Insta />,
-    link: "https://www.instagram.com/kunal_r0y/",
+    link: "https://www.instagram.com/5.kunal_7",
   },
 };
