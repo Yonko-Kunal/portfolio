@@ -23,6 +23,11 @@ const Navbar = () => {
       title: "Blogs",
       href: "/blogs",
     },
+
+    {
+      title: "Learn",
+      href: "/learn",
+    },
     {
       title: "Work",
       href: "/work-experience",
@@ -51,11 +56,8 @@ const Navbar = () => {
   }, []);
 
   return (
-
-
-    <motion.nav className="fixed border-b border-currentColor/20 top-0 left-0 right-0 z-9999 flex items-center justify-between px-2 bg-background">
-      <Container className="flex items-center justify-between  max-w-5xl border-l border-r border-currentColor/20 px-1">
-
+    <motion.nav className="border-currentColor/20 bg-background fixed top-0 right-0 left-0 z-9999 flex items-center justify-between border-b px-2">
+      <Container className="border-currentColor/20 flex max-w-5xl items-center justify-between border-r border-l px-1">
         <Link href="/">
           <div>
             {/* <Image className='rounded-full transition-all duration-300 ease-in-out hover:scale-90'
@@ -74,8 +76,9 @@ const Navbar = () => {
               <li className="transition-ease gap-4">
                 {navItems.map((items, idx) => (
                   <Link
-                    className={`relative px-2 py-1 font-mono md:text-[12px] text-sm font-medium hover:text-yellow-500 ${usePathname() === items.href ? "text-yellow-500" : ""
-                      }`}
+                    className={`relative px-2 py-1 font-mono text-sm font-medium hover:text-yellow-500 md:text-[12px] ${
+                      usePathname() === items.href ? "text-yellow-500" : ""
+                    }`}
                     href={items.href}
                     key={idx}
                     onMouseEnter={() => setHoverd(idx)}

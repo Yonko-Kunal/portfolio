@@ -13,7 +13,6 @@ import DividerScales from "@/components/common/DividerScales";
 export default function Home() {
   return (
     <section className="min-h-screen">
-
       <Hero />
       {/* <Spotify /> */}
       <DividerScales />
@@ -30,7 +29,6 @@ export default function Home() {
       <DividerScales />
       <MyCreativity />
       <DividerScales />
-
     </section>
   );
 }
