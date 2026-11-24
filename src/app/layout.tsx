@@ -19,6 +19,7 @@ import { ReactLenis } from "@/lib/lenis";
 
 import { siteConfig } from "@/config/Meta";
 import Providers from "@/components/providers";
+import { FisheyeWrapper } from "@/components/fisheye/FisheyeWrapper";
 import { ViewTransitions } from "next-view-transitions";
 
 const plexMono = IBM_Plex_Mono({
@@ -92,16 +93,19 @@ export default function RootLayout({
           <ReactLenis root>
             <Providers>
               <TooltipProvider>
-                <Navbar />
-                <ScrollToTop />
-                <BottomBlur />
+                <FisheyeWrapper>
+                  <Navbar />
+                  <ScrollToTop />
+                  <BottomBlur />
 
-                {children}
+                  {children}
+
+                  <Quote />
+                  <Footer />
+                </FisheyeWrapper>
                 {/* <CRTPreloader /> */}
 
                 <OnekoCat />
-                <Quote />
-                <Footer />
                 <ThemeAwareToaster />
               </TooltipProvider>
             </Providers>

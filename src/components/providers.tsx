@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from "next-themes";
 import { useEffect } from "react";
+import { FisheyeProvider } from "@/components/fisheye/FisheyeProvider";
 
 export default function Providers({
     children,
@@ -27,7 +28,9 @@ export default function Providers({
             disableTransitionOnChange
             storageKey="theme"
         >
-            {children}
+            <FisheyeProvider>
+                {children}
+            </FisheyeProvider>
         </ThemeProvider>
     );
 }

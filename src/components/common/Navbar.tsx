@@ -3,6 +3,7 @@
 import { heroConfig } from "@/config/Hero";
 import Container from "@/components/common/Container";
 import { ThemeToggleButton } from "./ThemeSwitch";
+import { FisheyeToggle } from "@/components/fisheye/FisheyeToggle";
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
@@ -85,7 +86,7 @@ const Navbar = () => {
                 {navItems.map((items, idx) => (
                   <Link
                     className={`relative px-2 py-1 font-mono text-sm font-medium hover:text-yellow-500 md:text-[12px] ${
-                      usePathname() === items.href ? "text-yellow-500" : ""
+                      pathname === items.href ? "text-yellow-500" : ""
                     }`}
                     href={items.href}
                     key={idx}
@@ -109,6 +110,7 @@ const Navbar = () => {
             </ul>
           </div>
           <Separator orientation="vertical" className="h-6! w-px!" />
+          <FisheyeToggle />
           <ThemeToggleButton variant="circle" start="dynamic" blur />
         </div>
       </Container>
