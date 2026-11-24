@@ -34,6 +34,8 @@ const Navbar = () => {
     },
   ];
 
+  const pathname = usePathname();
+  const isLearnPage = pathname === "/learn" || pathname?.startsWith("/learn");
   const { avatar } = heroConfig;
   const [hoverd, setHoverd] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -56,8 +58,22 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav className="border-currentColor/20 bg-background fixed top-0 right-0 left-0 z-9999 flex items-center justify-between border-b px-2">
-      <Container className="border-currentColor/20 flex max-w-5xl items-center justify-between border-r border-l px-1">
+    <motion.nav className="border-currentColor/20 bg-background fixed top-0 right-0 left-0 z-9999 flex items-center justify-between border-b">
+      <MotionContainer
+        layout
+        initial={false}
+        transition={{
+          layout: {
+            delay: 0.3,
+            duration: 0.6,
+            ease: [0.22, 1, 0.36, 1],
+          },
+        }}
+        className={`border-currentColor/20 flex items-center justify-between border-r border-l px-1 ${isLearnPage
+          ? "w-[90%] max-w-none xl:max-w-none 2xl:max-w-none"
+          : "max-w-5xl"
+          }`}
+      >
         <Link href="/">
           <div>
             {/* <Image className='rounded-full transition-all duration-300 ease-in-out hover:scale-90'
@@ -76,9 +92,8 @@ const Navbar = () => {
               <li className="transition-ease gap-4">
                 {navItems.map((items, idx) => (
                   <Link
-                    className={`relative px-2 py-1 font-mono text-sm font-medium hover:text-yellow-500 md:text-[12px] ${
-                      usePathname() === items.href ? "text-yellow-500" : ""
-                    }`}
+                    className={`relative px-2 py-1 font-mono text-sm font-medium hover:text-yellow-500 md:text-[12px] ${usePathname() === items.href ? "text-yellow-500" : ""
+                      }`}
                     href={items.href}
                     key={idx}
                     onMouseEnter={() => setHoverd(idx)}
@@ -103,7 +118,7 @@ const Navbar = () => {
           <Separator orientation="vertical" className="h-6! w-px!" />
           <ThemeToggleButton variant="circle" start="dynamic" blur />
         </div>
-      </Container>
+      </MotionContainer>
     </motion.nav>
   );
 };

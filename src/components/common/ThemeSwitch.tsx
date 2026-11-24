@@ -746,11 +746,11 @@ export const createAnimation = (
     const maxRadius =
       typeof window !== "undefined" && coords
         ? Math.ceil(
-            Math.hypot(
-              Math.max(coords.x, window.innerWidth - coords.x),
-              Math.max(coords.y, window.innerHeight - coords.y),
-            ),
-          )
+          Math.hypot(
+            Math.max(coords.x, window.innerWidth - coords.x),
+            Math.max(coords.y, window.innerHeight - coords.y),
+          ),
+        )
         : null;
 
     const fromRadius = maxRadius !== null ? "0px" : "0%";
