@@ -21,8 +21,8 @@ export const Quote = () => {
   const { quote, author } = currentQuote;
 
   return (
-    <div className="border-t border-currentColor/20">
-      <Container className=" border-l border-r border-currentColor/20">
+    <div className="border-currentColor/20 border-t">
+      <Container className="border-currentColor/20 border-r border-l">
         <div className="relative px-4 py-10">
           <svg
             aria-hidden="true"

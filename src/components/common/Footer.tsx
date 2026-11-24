@@ -1,4 +1,5 @@
 import React from "react";
+import TextAnatomy from "@/../public/assets/text_anatomy";
 
 import Container from "./Container";
 import { footerConfig } from "@/config/Footer";
@@ -6,12 +7,15 @@ import { footerConfig } from "@/config/Footer";
 export default function Footer() {
   return (
     <div className="border-currentColor/20 border-t border-b">
-      <Container className="border-currentColor/20 border-r border-l py-8">
+      <Container className="border-currentColor/20 mb-20 border-r border-l py-8">
         <div className="flex flex-col items-center justify-center">
           <p className="text-secondary pb-20 text-center text-sm">
             {footerConfig.text} <b>{footerConfig.developer}</b> <br /> &copy;{" "}
             {new Date().getFullYear()}. {footerConfig.copyright}
           </p>
+        </div>
+        <div className="flex items-center justify-center select-none">
+          <TextAnatomy />
         </div>
       </Container>
     </div>

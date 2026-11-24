@@ -1,0 +1,484 @@
+/* CRT Preloader Fonts */
+@font-face {
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/terminal_copy.ttf");
+  font-family: "Terminal";
+  font-display: swap;
+}
+
+@font-face {
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/sys.ttf") format("truetype");
+  font-family: "Sys";
+  font-display: swap;
+}
+
+/* CRT Preloader Root Container */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #1b2838;
+  overflow: hidden;
+  z-index: 99999;
+  user-select: none;
+}
+
+/* Screen container */
+.scanlines .screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background when TV is off */
+.scanlines .screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent linear-gradient(to bottom, #85908c 0%, #323431 100%) repeat scroll 0 0;
+  z-index: 0;
+}
+
+/* Canvas picture element */
+.scanlines .picture {
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+  transform: scale(0, 0);
+  background: transparent linear-gradient(to bottom, #85908c 0%, #323431 100%) repeat scroll 0 0;
+  display: block;
+  image-rendering: pixelated;
+}
+
+/* CRT scanlines & glass overlay */
+.scanlines .overlay {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.scanlines .overlay::after {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.4) 85%, rgba(0, 0, 0, 0.95) 100%),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/crt.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  content: "";
+  pointer-events: none;
+  z-index: 5;
+}
+
+.scanlines .overlay::before {
+  position: absolute;
+  inset: 0;
+  content: " ";
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 4;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Glitch AV-1 Text in top-left */
+.scanlines .text {
+  color: lime;
+  opacity: 0;
+  filter: blur(0.5px);
+  font-family: "Sys", "Terminal", var(--font-ibm-plex-mono), "VT323", "Courier New", monospace;
+  font-size: clamp(24px, 5vmin, 44px);
+  font-weight: bold;
+  left: 5%;
+  position: absolute;
+  text-shadow: 0 0 3px lime;
+  top: 8%;
+  width: 200px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.scanlines.on .text {
+  opacity: 1;
+  transition: opacity 300ms ease 350ms;
+}
+
+.scanlines .overlay .text {
+  animation: 5s ease 1000ms normal none infinite running crtGlitch;
+}
+
+.scanlines .text span {
+  filter: blur(1px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: crtBlur 30ms infinite, crtJerk 50ms infinite;
+}
+
+.scanlines .text span:nth-child(1) {
+  color: red;
+  margin-left: -2px;
+  filter: blur(2px);
+}
+
+.scanlines .text span:nth-child(2) {
+  color: lime;
+  margin-left: 2px;
+  filter: blur(2px);
+  animation: crtJerkup 1s infinite, crtGlitch2 1s infinite;
+}
+
+.scanlines .text span:nth-child(3) {
+  color: blue;
+  position: absolute;
+  left: 2px;
+  filter: blur(1px);
+  animation: crtGlitch1 1s infinite;
+}
+
+.scanlines .text span:nth-child(4) {
+  color: #fff;
+  filter: blur(1px);
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+}
+
+.scanlines .text span:nth-child(5) {
+  color: rgba(255, 255, 255, 0.1);
+  filter: blur(15px);
+}
+
+/* Center "NO SIGNAL" Container & Connect Button */
+.scanlines .no-signal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 4vh, 40px);
+  z-index: 10;
+  pointer-events: auto;
+  opacity: 0;
+  transition: opacity 400ms ease 400ms;
+  text-align: center;
+}
+
+.scanlines.on .no-signal-container {
+  opacity: 1;
+}
+
+.scanlines.off .no-signal-container,
+.scanlines.off .text {
+  opacity: 0;
+  transition: opacity 120ms ease;
+  pointer-events: none;
+}
+
+/* NO SIGNAL Glitch Text */
+.scanlines .no-signal-text {
+  position: relative;
+  display: inline-block;
+  color: lime;
+  filter: blur(0.5px);
+  font-family: "Sys", "Terminal", var(--font-ibm-plex-mono), "VT323", "Courier New", monospace;
+  font-size: clamp(34px, 7vw, 76px);
+  font-weight: 900;
+  letter-spacing: clamp(4px, 1.2vw, 10px);
+  text-transform: uppercase;
+  text-shadow: 0 0 6px lime, 0 0 16px rgba(0, 255, 0, 0.6);
+  user-select: none;
+  pointer-events: none;
+  animation: 5s ease 1000ms normal none infinite running crtGlitch;
+  line-height: 1.1;
+}
+
+.scanlines .no-signal-text span {
+  filter: blur(1px);
+  animation: crtBlur 30ms infinite, crtJerk 50ms infinite;
+}
+
+.scanlines .no-signal-text .base-text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.scanlines .no-signal-text span.glitch-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.scanlines .no-signal-text span.glitch-layer:nth-child(2) {
+  color: red;
+  transform: translateX(-3px);
+  filter: blur(2px);
+}
+
+.scanlines .no-signal-text span.glitch-layer:nth-child(3) {
+  color: lime;
+  transform: translateX(3px);
+  filter: blur(2px);
+  animation: crtJerkup 1s infinite, crtGlitch2 1s infinite;
+}
+
+.scanlines .no-signal-text span.glitch-layer:nth-child(4) {
+  color: blue;
+  transform: translateX(2px);
+  filter: blur(1px);
+  animation: crtGlitch1 1s infinite;
+}
+
+.scanlines .no-signal-text span.glitch-layer:nth-child(5) {
+  color: #fff;
+  filter: blur(1px);
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+}
+
+.scanlines .no-signal-text span.glitch-layer:nth-child(6) {
+  color: rgba(255, 255, 255, 0.15);
+  filter: blur(15px);
+}
+
+/* White Connect Button */
+.scanlines .connect-btn {
+  background: #ffffff;
+  color: #0b0f19;
+  font-family: "Sys", "Terminal", var(--font-ibm-plex-mono), "VT323", "Courier New", monospace;
+  font-size: clamp(16px, 1.8vw, 24px);
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 14px 44px;
+  border: 3px solid #ffffff;
+  border-radius: 6px;
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.8),
+    0 0 35px rgba(0, 255, 128, 0.3);
+  cursor: pointer;
+  pointer-events: auto;
+  user-select: none;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scanlines .connect-btn:hover {
+  background: #00ff88;
+  color: #000000;
+  border-color: #00ff88;
+  box-shadow:
+    0 0 25px rgba(0, 255, 136, 0.9),
+    0 0 50px rgba(0, 255, 136, 0.5);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.scanlines .connect-btn:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.8);
+}
+
+/* Subtle hint for skipping */
+.scanlines .hint-bar {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.65);
+  font-family: "Sys", "Terminal", var(--font-ibm-plex-mono), "VT323", "Courier New", monospace;
+  font-size: clamp(12px, 1.4vw, 16px);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 10;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  pointer-events: auto;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 14px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.scanlines .hint-bar:hover {
+  color: #1af2ff;
+  border-color: #1af2ff;
+}
+
+/* Power On & Power Off states */
+.scanlines.on .picture {
+  animation: 2400ms linear 0ms normal forwards 1 running crtOn;
+}
+
+.scanlines.off .picture {
+  animation: 750ms cubic-bezier(0.23, 1, 0.32, 1) 0ms normal forwards 1 running crtOff;
+}
+
+/* CRT Keyframe Animations */
+@keyframes crtOn {
+  0% {
+    transform: scale(1, 0.8) translate3d(0, 0, 0);
+    filter: brightness(4);
+    opacity: 1;
+  }
+  3.5% {
+    transform: scale(1, 0.8) translate3d(0, 100%, 0);
+  }
+  3.6% {
+    transform: scale(1, 0.8) translate3d(0, -100%, 0);
+    opacity: 1;
+  }
+  9% {
+    transform: scale(1.3, 0.6) translate3d(0, 100%, 0);
+    filter: brightness(4);
+    opacity: 0;
+  }
+  11% {
+    transform: scale(1, 1) translate3d(0, 0, 0);
+    filter: contrast(0.5) brightness(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1, 1) translate3d(0, 0, 0);
+    filter: contrast(1) brightness(1.2) saturate(1.3);
+    opacity: 1;
+  }
+}
+
+@keyframes crtOff {
+  0% {
+    transform: scale(1, 1);
+    filter: brightness(1);
+  }
+  40% {
+    transform: scale(1, 0.005);
+    filter: brightness(100);
+  }
+  70% {
+    transform: scale(1, 0.005);
+  }
+  90% {
+    transform: scale(0.005, 0.005);
+  }
+  100% {
+    transform: scale(0, 0);
+  }
+}
+
+@keyframes crtBlur {
+  0% {
+    filter: blur(1px);
+    opacity: 0.8;
+  }
+  50% {
+    filter: blur(1px);
+    opacity: 1;
+  }
+  100% {
+    filter: blur(1px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes crtJerk {
+  50% {
+    transform: translateX(1px);
+  }
+  51% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes crtJerkup {
+  0% {
+    transform: translateY(1px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes crtGlitch1 {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(0);
+  }
+  31% {
+    transform: translateX(10px);
+  }
+  32% {
+    transform: translateX(0);
+  }
+  98% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes crtGlitch2 {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(0);
+  }
+  31% {
+    transform: translateX(-10px);
+  }
+  32% {
+    transform: translateX(0);
+  }
+  98% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes crtGlitch {
+  30% {
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1, 1) skew(0, 0);
+  }
+  41% {
+    opacity: 0.8;
+    transform: scale(1, 1.2) skew(80deg, 0);
+  }
+  42% {
+    opacity: 0.8;
+    transform: scale(1, 1.2) skew(-50deg, 0);
+  }
+  43% {
+    opacity: 1;
+    transform: scale(1, 1) skew(0, 0);
+  }
+  65% {
+  }
+}

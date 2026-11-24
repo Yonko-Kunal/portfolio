@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, Mulish } from "next/font/google";
 
 import "./globals.css";
+import "./crt-preloader.css";
 
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
@@ -11,10 +12,10 @@ import OnekoCat from "@/components/common/OnekoCat";
 import ScrollToTop from "@/components/common/ScrollToTop";
 import ThemeAwareToaster from "@/components/common/ThemeAwareToaster";
 import { Quote } from "@/components/common/Quote";
+import CRTPreloader from "@/components/CRTPreloader";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ReactLenis } from "@/lib/lenis";
-
 
 import { siteConfig } from "@/config/Meta";
 import Providers from "@/components/providers";
@@ -96,6 +97,7 @@ export default function RootLayout({
                 <BottomBlur />
 
                 {children}
+                {/* <CRTPreloader /> */}
 
                 <OnekoCat />
                 <Quote />
