@@ -14,7 +14,7 @@ export const FISHEYE_CONFIG = {
    * Subtle barrel distortion curvature (~20% of available visual range).
    * Controls center magnification and edge curvature without hurting usability.
    */
-  curvature: 0.085,
+  curvature: 0.12,
 
   /** Maximum pixel resolution along the longest axis of the generated displacement map */
   maxMapDimension: 256,
